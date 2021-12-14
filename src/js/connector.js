@@ -32,7 +32,8 @@ window.TrelloPowerUp.initialize(
     'card-buttons': function(t, opts) {
       return [{
         text: 'Demand-Power-Up',
-        callback: onBtnClick,
+        // callback: onBtnClick,
+        callback: (t) => t.popup(t),
         condition: 'edit'
       }, {
         text: 'Open',
