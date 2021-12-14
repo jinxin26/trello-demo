@@ -2,6 +2,7 @@ console.log('Hello World!');
 
 const onBtnClick = function(t, opts) {
   console.log('Someone clicked the button');
+  t.popup();
 };
 
 window.TrelloPowerUp.initialize(
@@ -32,8 +33,7 @@ window.TrelloPowerUp.initialize(
     'card-buttons': function(t, opts) {
       return [{
         text: 'Demand-Power-Up',
-        // callback: onBtnClick,
-        callback: (t) => t.popup(t),
+        callback: onBtnClick,
         condition: 'edit'
       }, {
         text: 'Open',
