@@ -7,7 +7,27 @@ const onBtnClick = function(t, opts) {
 window.TrelloPowerUp.initialize(
   {
     'card-badges': function(t, opts) {
-      return [];
+      let cardAttachments = t.card('attachments');
+      // let cardAttachments = opts.attachments;
+      return t.card("name")
+        .get("name")
+        .then(function(cardName) {
+        console.log('card name' + cardName);
+        return [
+          {
+          dynamic: function() {
+            return {
+              text: "Dynamic" + (Math.random() * 100).toFixed(0).toString(),
+              color: "green",
+              refresh: 10,
+            };
+          },
+        },
+          {
+            text: "Static",
+            color: null,
+          }];
+      });
     },
     'card-buttons': function(t, opts) {
       return [{
