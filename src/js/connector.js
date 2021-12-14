@@ -12,7 +12,7 @@ window.TrelloPowerUp.initialize(
       return t.card("name")
         .get("name")
         .then(function(cardName) {
-        console.log('card name' + cardName);
+        console.log('card name  ' + cardName);
         return [
           {
           dynamic: function() {
@@ -32,7 +32,8 @@ window.TrelloPowerUp.initialize(
     'card-buttons': function(t, opts) {
       return [{
         text: 'Demand-Power-Up',
-        callback: onBtnClick,
+        // callback: onBtnClick,
+        callback: t.popup(),
         condition: 'edit'
       }, {
         text: 'Open',
