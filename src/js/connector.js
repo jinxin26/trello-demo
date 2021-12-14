@@ -2,7 +2,6 @@ console.log('Hello World!');
 
 const onBtnClick = function(t, opts) {
   console.log('Someone clicked the button');
-  t.popup();
 };
 
 window.TrelloPowerUp.initialize(
