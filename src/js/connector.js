@@ -79,7 +79,7 @@ window.TrelloPowerUp.initialize(
             dynamic: function() {
               return {
                 title: 'Detail Badge',
-                text: changeCount.toString(),
+                text: '0' || res.toString(),
                 color: 'red',
                 refresh: 1
               };
