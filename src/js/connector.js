@@ -10,7 +10,8 @@ const onSaveBtnClicked = function (t, opts) {
 const onSetBtnCLicked = function(t) {
   console.log('before set', changeCount);
   changeCount = changeCount + 1;
-  t.set('card', 'shared', {changeCount}).then(res => {
+  t.card('name')
+    .set('card', 'shared', {changeCount}).then(res => {
     console.log(res);
     return [{
       dynamic: function() {
