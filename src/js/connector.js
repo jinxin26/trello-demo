@@ -67,11 +67,12 @@ window.TrelloPowerUp.initialize(
       return t.card('name')
         .get('name')
         .then(async function(cardName) {
-          // if(changeCount === undefined) {
-          //   t.set('card', 'shared', 'changeCount', '1')
-          // }
+          if(changeCount === undefined) {
+            t.set('card', 'shared', 'changeCount', '1')
+          }
+          console.log('changeCount0', changeCount);
           changeCount = await t.get('card', 'shared', 'changeCount', '1');
-          console.log('changeCount', changeCount);
+          console.log('changeCount1', changeCount);
           return [{
             dynamic: function() {
               return {
