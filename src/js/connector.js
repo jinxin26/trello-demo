@@ -66,7 +66,10 @@ window.TrelloPowerUp.initialize(
       return t.card('name')
         .get('name')
         .then(async function(cardName) {
-          changeCount = await t.get('card', 'shared', 'changeCount', 1);
+          // if(changeCount === undefined) {
+          //   t.set('card', 'shared', 'changeCount', '1')
+          // }
+          changeCount = await t.get('card', 'shared', 'changeCount', '1');
           return [{
             dynamic: function() {
               return {
@@ -76,10 +79,6 @@ window.TrelloPowerUp.initialize(
                 refresh: 10
               };
             },
-          }, {
-            title: 'Detail',
-            text: '6',
-            color: 'blue'
           }];
         });
     },
