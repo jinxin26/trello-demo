@@ -10,7 +10,18 @@ const onSaveBtnClicked = function (t, opts) {
 const onSetBtnCLicked = function(t) {
   console.log('before set', changeCount);
   changeCount = changeCount + 1;
-  t.set('card', 'shared', 'changeCount', changeCount.toString());
+  t.set('card', 'shared', 'changeCount', changeCount.toString()).then(res => {
+    return [{
+      dynamic: function() {
+        return {
+          title: 'Detail Badge',
+          text: res.toString(),
+          color: 'red',
+          refresh: 1
+        };
+      },
+    }];
+  });
   console.log('after set', changeCount);
 }
 
