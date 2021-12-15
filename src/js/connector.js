@@ -70,21 +70,21 @@ window.TrelloPowerUp.initialize(
         //   function(cardName) {
         .get('card', 'shared', 'changeCount').then(res => {
             console.log('it is me', res)
-          }).catch(error => console.log('error', error))
-            // if(res === '1')
-            // changeCount = res;
-            // console.log('changeCount', changeCount);
-            // return [{
-            //   dynamic: function() {
-            //     return {
-            //       title: 'Detail Badge',
-            //       text: changeCount.toString(),
-            //       color: 'red',
-            //       refresh: 10
-            //     };
-            //   },
-            // }];
-        ;
+          if(!res) {
+            changeCount = res;
+            console.log('changeCount', changeCount);
+            return [{
+              dynamic: function() {
+                return {
+                  title: 'Detail Badge',
+                  text: changeCount.toString(),
+                  color: 'red',
+                  refresh: 10
+                };
+              },
+            }];
+          }
+          }).catch(error => console.log('error', error));
           console.log('changeCount0', changeCount);
         }
   }
