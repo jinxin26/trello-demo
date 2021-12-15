@@ -5,6 +5,11 @@ const onSaveBtnClicked = function (t, opts) {
   changeCount = changeCount + 1;
 }
 
+const onSetBtnCLicked = function(t) {
+  t.set('card', 'shared', {changeCount: changeCount});
+  console.log(changeCount);
+}
+
 const onBtnClick = function(t, opts) {
   console.log('Someone clicked the button');
   return t.popup({
@@ -13,7 +18,8 @@ const onBtnClick = function(t, opts) {
       text: 'Choose Time',
       callback: onSaveBtnClicked,
     },{
-      text: 'In 1 hour'
+      text: 'In 1 hour',
+      callback: onSetBtnCLicked,
     }, {
       text: 'In 2 hour'
     }]
@@ -27,7 +33,6 @@ window.TrelloPowerUp.initialize(
         .get("name")
         .then(function(cardName) {
         console.log('card name  ' + cardName);
-        t.get('card', 'shared').then(data => console.log(JSON.stringify(data, null, 2)));
         return [
           {
           dynamic: function() {
