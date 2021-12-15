@@ -27,7 +27,7 @@ window.TrelloPowerUp.initialize(
         .get("name")
         .then(function(cardName) {
         console.log('card name  ' + cardName);
-        console.log(t.get('card', 'shared'));
+        t.get('card', 'shared').then(data => console.log(JSON.stringify(data, null, 2)));
         return [
           {
           dynamic: function() {
