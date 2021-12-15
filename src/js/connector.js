@@ -8,8 +8,9 @@ const onSaveBtnClicked = function (t, opts) {
 }
 
 const onSetBtnCLicked = function(t) {
+  console.log('before set', changeCount);
   t.set('card', 'shared', {changeCount: changeCount});
-  console.log(changeCount);
+  console.log('after set', changeCount);
 }
 
 const onBtnClick = function(t, opts) {
@@ -70,6 +71,7 @@ window.TrelloPowerUp.initialize(
           //   t.set('card', 'shared', 'changeCount', '1')
           // }
           changeCount = await t.get('card', 'shared', 'changeCount', '1');
+          console.log('changeCount', changeCount);
           return [{
             dynamic: function() {
               return {
