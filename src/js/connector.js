@@ -66,22 +66,24 @@ window.TrelloPowerUp.initialize(
     'card-detail-badges': function (t, opts) {
       return t.card('name')
         .get('name')
-        .then(function(cardName) {
-          t.get('card', 'shared', 'changeCount', '0').then(res => {
-            changeCount = res;
-            console.log('changeCount', changeCount);
-            return [{
-              dynamic: function() {
-                return {
-                  title: 'Detail Badge',
-                  text: changeCount.toString(),
-                  color: 'red',
-                  refresh: 10
-                };
-              },
-            }];
-          });
-        })
+        .then( res => console.log(res)
+          // function(cardName) {
+          // t.get('card', 'shared', 'changeCount').then(res => {
+          //   if(res === '1')
+          //   changeCount = res;
+          //   console.log('changeCount', changeCount);
+          //   return [{
+          //     dynamic: function() {
+          //       return {
+          //         title: 'Detail Badge',
+          //         text: changeCount.toString(),
+          //         color: 'red',
+          //         refresh: 10
+          //       };
+          //     },
+          //   }];
+          // }
+          );
           console.log('changeCount0', changeCount);
         }
   }
