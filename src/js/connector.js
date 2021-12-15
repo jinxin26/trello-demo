@@ -70,19 +70,19 @@ window.TrelloPowerUp.initialize(
           t.get('card', 'shared', 'changeCount', '0').then(res => {
             changeCount = res;
             console.log('changeCount', changeCount);
+            return [{
+              dynamic: function() {
+                return {
+                  title: 'Detail Badge',
+                  text: changeCount.toString(),
+                  color: 'red',
+                  refresh: 10
+                };
+              },
+            }];
           });
         })
           console.log('changeCount0', changeCount);
-          return [{
-            dynamic: function() {
-              return {
-                title: 'Detail Badge',
-                text: changeCount.toString(),
-                color: 'red',
-                refresh: 10
-              };
-            },
-          }];
         }
   }
 );
