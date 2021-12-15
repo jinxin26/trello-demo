@@ -65,10 +65,10 @@ window.TrelloPowerUp.initialize(
     'card-detail-badges': function (t, opts) {
       return t.card('name')
         .get('name')
-        .then(function (cardName) {
-          changeCount = t.get('card', 'shared', 'changeCount', 1);
+        .then(async function(cardName) {
+          changeCount = await t.get('card', 'shared', 'changeCount', 1);
           return [{
-            dynamic: function () {
+            dynamic: function() {
               return {
                 title: 'Detail Badge',
                 text: changeCount.toString(),
@@ -76,7 +76,7 @@ window.TrelloPowerUp.initialize(
                 refresh: 10
               };
             },
-          },{
+          }, {
             title: 'Detail',
             text: '6',
             color: 'blue'
