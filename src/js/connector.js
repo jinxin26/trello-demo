@@ -69,7 +69,7 @@ window.TrelloPowerUp.initialize(
         .then(function(cardName) {
           if (changeCount === undefined) {
             t.set('card', 'shared', 'changeCount', '1').then(function() {
-              t.get('card', 'shared', 'changeCount').then(res => changeCount = res);
+              t.get('card', 'shared', 'changeCount').then(res => {changeCount = res; console.log('changeCount1', changeCount)});
             })
           }
           console.log('changeCount0', changeCount);
