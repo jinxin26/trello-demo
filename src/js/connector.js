@@ -67,8 +67,8 @@ window.TrelloPowerUp.initialize(
             title: 'Detail',
             text: '6',
             color: 'blue'
-          }]
-        })
-    }
+          }];
+        });
+    },
   }
 );
