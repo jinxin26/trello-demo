@@ -1,7 +1,9 @@
 console.log('Hello World!');
 
-let changeCount = 0;
+let changeCount;
 const onSaveBtnClicked = function (t, opts) {
+  changeCount = t.card("changeCount");
+  console.log(changeCount);
   changeCount = changeCount + 1;
 }
 
