@@ -65,12 +65,12 @@ window.TrelloPowerUp.initialize(
     },
     'card-detail-badges': function (t, opts) {
       return t.card('name')
-        .get('name')
-        .then(
-          function(cardName) {
-          t.get(cardName, 'shared', 'changeCount').then(res => {
+        // .get('name')
+        // .then(
+        //   function(cardName) {
+        .get('card', 'shared', 'changeCount').then(res => {
             console.log('it is me', res)
-          })
+          }).catch(error => console.log('error', error))
             // if(res === '1')
             // changeCount = res;
             // console.log('changeCount', changeCount);
@@ -84,8 +84,7 @@ window.TrelloPowerUp.initialize(
             //     };
             //   },
             // }];
-          }
-          );
+        ;
           console.log('changeCount0', changeCount);
         }
   }
