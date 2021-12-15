@@ -2,6 +2,16 @@ console.log('Hello World!');
 
 const onBtnClick = function(t, opts) {
   console.log('Someone clicked the button');
+  return t.popup({
+    title: 'Demand Change',
+    items: [{
+      text: 'Choose Time'
+    },{
+      text: 'In 1 hour'
+    }, {
+      text: 'In 2 hour'
+    }]
+  });
 };
 
 window.TrelloPowerUp.initialize(
