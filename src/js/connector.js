@@ -66,12 +66,12 @@ window.TrelloPowerUp.initialize(
     'card-detail-badges': function (t, opts) {
       return t.card('name')
         .get('name')
-        .then(function(cardName) {
-          if(changeCount === undefined) {
-            t.set('card', 'shared', 'changeCount', '1')
+        .then(async function(cardName) {
+          if (changeCount === undefined) {
+            await t.set('card', 'shared', 'changeCount', '1')
           }
           console.log('changeCount0', changeCount);
-          changeCount = t.get('card', 'shared', 'changeCount', '1');
+          changeCount = await t.get('card', 'shared', 'changeCount');
           console.log('changeCount1', changeCount);
           return [{
             dynamic: function() {
