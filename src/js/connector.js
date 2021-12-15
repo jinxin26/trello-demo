@@ -67,22 +67,22 @@ window.TrelloPowerUp.initialize(
       return t.card('name')
         .get('name')
         .then(function(cardName) {
-          if (changeCount === undefined) {
-            t.set('card', 'shared', 'changeCount', '1').then(function() {
-              t.get('card', 'shared', 'changeCount').then(res => {changeCount = res; return [{
-                dynamic: function() {
-                  return {
-                    title: 'Detail Badge',
-                    text: changeCount.toString(),
-                    color: 'red',
-                    refresh: 10
-                  };
-                },
-              }];});
-            })
-          }
+          t.get('card', 'shared', 'changeCount', '0').then(res => {
+            changeCount = res;
+            console.log('changeCount', changeCount);
+          });
+        })
           console.log('changeCount0', changeCount);
-        });
-    },
+          return [{
+            dynamic: function() {
+              return {
+                title: 'Detail Badge',
+                text: changeCount.toString(),
+                color: 'red',
+                refresh: 10
+              };
+            },
+          }];
+        }
   }
 );
