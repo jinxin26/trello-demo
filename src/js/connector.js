@@ -23,14 +23,11 @@ const onBtnClick = function(t, opts) {
 window.TrelloPowerUp.initialize(
   {
     'card-badges': function(t, opts) {
-      let cardAttachments = t.card('attachments');
-      // let cardAttachments = opts.attachments;
-      const info = t.get('card', 'shared');
-      console.log(info);
       return t.card("name")
         .get("name")
         .then(function(cardName) {
         console.log('card name  ' + cardName);
+        console.log(t.get('card', 'shared'));
         return [
           {
           dynamic: function() {
