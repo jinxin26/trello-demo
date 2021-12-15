@@ -2,7 +2,7 @@ console.log('Hello World!');
 
 let changeCount;
 const onSaveBtnClicked = function (t, opts) {
-  changeCount = t.card("changeCount");
+  changeCount = t.get('card', 'shared', 'changeCount');
   console.log(changeCount);
   changeCount = changeCount + 1;
 }
