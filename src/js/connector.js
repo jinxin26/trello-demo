@@ -63,6 +63,10 @@ window.TrelloPowerUp.initialize(
                 refresh: 10
               };
             },
+          },{
+            title: 'Detail',
+            text: '6',
+            color: 'blue'
           }]
         })
     }
