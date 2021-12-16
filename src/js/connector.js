@@ -74,27 +74,27 @@ window.TrelloPowerUp.initialize(
     },
     'card-detail-badges': function (t, opts) {
       return t.card('name')
-        .then(res => console.log('this is all', res))
+        // .then(res => console.log('this is all', res))
         // // .get('name')
         // // .then(
         // //   function(cardName) {
-        // .get('card', 'shared', 'changeCount').then(res => {
-        //     console.log('it is me', res)
-        //   if(!res) {
-        //     changeCount = 0;
-        //     console.log('changeCount', changeCount);
-        //   }
-        //   return [{
-        //     dynamic: function() {
-        //       return {
-        //         title: 'Detail Badge',
-        //         text: '0' || res.toString(),
-        //         color: 'red',
-        //         refresh: 10
-        //       };
-        //     },
-        //   }];
-        //   }).catch(error => console.log('error', error));
+        .get('card', 'shared', 'changeCount').then(res => {
+            console.log('it is me', res)
+          if(!res) {
+            changeCount = 0;
+            console.log('changeCount', changeCount);
+          }
+          return [{
+            dynamic: function() {
+              return {
+                title: 'Detail Badge',
+                text: '0' || res.toString(),
+                color: 'red',
+                refresh: 10
+              };
+            },
+          }];
+          }).catch(error => console.log('error', error));
         }
   }
 );
