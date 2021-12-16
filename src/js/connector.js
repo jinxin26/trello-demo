@@ -42,8 +42,7 @@ window.TrelloPowerUp.initialize(
       return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
         console.log('card-badges by card id', res);
         if(res) {
-          return t.card('name')
-            .get('name')
+          return t.card()
             .then(result => {
               console.log('card-badges', result);
               return [{
