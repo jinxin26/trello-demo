@@ -63,21 +63,20 @@ window.TrelloPowerUp.initialize(
     },
     'card-buttons': cardButtons,
     'card-detail-badges': function (t, opts) {
-      return t.card('name', 'demandChangeCount')
-          .get('name', 'demandChangeCount')
-          .then(function (cardName) {
-            console.log('demandChangeCount', 'demandChangeCount');
-            return [{
-              dynamic: function () {
-                return {
-                  title: 'Changes',
-                  text: demandChangeCount.toString(),
-                  color: 'red',
-                  refresh: 10
-                };
-              },
-            }]
-          })
+      const cardId = t.getContext().card;
+      t.get(cardId, 'shared', 'demandChangeCount').then(res => {
+        demandChangeCount = res ? res : 0;
+        return [{
+          dynamic: function () {
+            return {
+              title: 'Changes',
+              text: demandChangeCount,
+              color: 'red',
+              refresh: 10
+            };
+          },
+        }]
+      });
     },
   }
 );
