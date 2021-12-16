@@ -10,7 +10,7 @@ const onSaveBtnClicked = function (t, opts) {
 const onSetBtnCLicked = function(t) {
   console.log('before set', changeCount);
   changeCount = changeCount + 1;
-    t.set('card', 'shared', 'changeCount', changeCount.toString()).then(res => {console.log(res);});
+  t.set('card', 'shared', 'changeCount', changeCount.toString()).then(res => {console.log(res);});
   console.log('after set', changeCount);
 }
 
@@ -81,7 +81,7 @@ window.TrelloPowerUp.initialize(
                 title: 'Detail Badge',
                 text: '0' || res.toString(),
                 color: 'red',
-                refresh: 1
+                refresh: 10
               };
             },
           }];
