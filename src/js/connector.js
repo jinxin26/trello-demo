@@ -1,9 +1,15 @@
 console.log('Hello World!');
 
-let changingTimes = 0;
-const onSaveBtnClicked = function (t, opts) {
-  changingTimes = changingTimes + 1;
-}
+const t = window.TrelloPowerUp.iframe();
+const context = t.getContext();
+console.log("context=",context);
+let demandChangeCount = t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInResponse => {
+  demandChangeCount = demandChangeCountInResponse ? demandChangeCountInResponse : 0;
+  showDemandChangeCount(`total changes: ${demandChangeCount}`);
+});
+// const onSaveBtnClicked = function (t, opts) {
+//   changingTimes = changingTimes + 1;
+// }
 
 const onBtnClick = function(t, opts) {
   console.log('Someone clicked the button');
@@ -70,7 +76,7 @@ window.TrelloPowerUp.initialize(
               dynamic: function () {
                 return {
                   title: 'Changes',
-                  text: changingTimes.toString(),
+                  text: demandChangeCount.toString(),
                   color: 'red',
                   refresh: 10
                 };
