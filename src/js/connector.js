@@ -7,13 +7,14 @@ const onSaveBtnClicked = function (t, opts) {
   changeCount = changeCount + 1;
 }
 
-const onSetBtnCLicked = function(t) {
+const onSetBtnCLicked = async function(t) {
   console.log('before set', changeCount);
   changeCount = changeCount + 1;
   console.log('type', typeof changeCount);
   const permission = t.getContext().permissions;
   console.log('permission', permission);
-  t.set('card', 'shared', 'changeCount', '2').then(t.get('card', 'shared', 'changeCount')).then(res => {
+  await t.set('card', 'shared', 'changeCount', '2');
+  t.get('card', 'shared', 'changeCount').then(res => {
     console.log('res', res);
   });
   console.log('after set', changeCount);
