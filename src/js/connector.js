@@ -60,7 +60,7 @@ window.TrelloPowerUp.initialize(
             .then(res => {
               console.log('card-badges', res);
               return [{
-                text: '1',
+                text: res,
                 color: 'red'
               }]
             });
