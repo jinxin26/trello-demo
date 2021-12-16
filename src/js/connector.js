@@ -69,9 +69,14 @@ window.TrelloPowerUp.initialize(
         console.log('demandChangeCount', demandChangeCount);
       });
         return [{
-            title: 'Changes',
-            text: demandChangeCount,
-            color: 'red'
+          dynamic: function () {
+            return {
+              title: 'Changes',
+              text: demandChangeCount || 0,
+              color: 'red',
+              refresh: 10
+            };
+          },
         }];
     },
   }
