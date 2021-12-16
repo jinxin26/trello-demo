@@ -39,19 +39,28 @@ window.TrelloPowerUp.initialize(
     },
     'card-badges': function(t, opts) {
       const cardId = t.getContext().card;
-      return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
-        console.log('card-badges', res);
-        if (res) {
+      // return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
+      //   console.log('card-badges', res);
+      //   if (res) {
+      //     return [{
+      //       text: demandChangeCount,
+      //       color: 'red'
+      //     }]
+      //   }
+      //   return [{
+      //     text: demandChangeCount,
+      //     color: 'yellow'
+      //   }];
+      // });
+      return t.card('demandChangeCount')
+        .get('demandChangeCount')
+        .then(res => {
+          console.log('card-badges', res);
           return [{
-            text: demandChangeCount,
+            text: '1',
             color: 'red'
           }]
-        }
-        return [{
-          text: demandChangeCount,
-          color: 'yellow'
-        }];
-      })
+        });
     },
     'card-buttons': cardButtons,
     'card-detail-badges': function (t, opts) {
