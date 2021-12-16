@@ -40,6 +40,7 @@ window.TrelloPowerUp.initialize(
     'card-badges': function(t, opts) {
       const cardId = t.getContext().card;
       return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
+        console.log('card-badges', res);
         if (res) {
           return [{
             color: 'red'
