@@ -43,6 +43,7 @@ window.TrelloPowerUp.initialize(
         console.log('card-badges', res);
         if (res) {
           return [{
+            text: demandChangeCount,
             color: 'red'
           }]
         }
