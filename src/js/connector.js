@@ -62,22 +62,22 @@ window.TrelloPowerUp.initialize(
       });
     },
     'card-buttons': cardButtons,
-    'card-detail-badges': function (t, opts) {
+    'card-detail-badges': async function(t, opts) {
       const cardId = t.getContext().card;
-      t.get(cardId, 'shared', 'demandChangeCount').then(res => {
+      await t.get(cardId, 'shared', 'demandChangeCount').then(res => {
         demandChangeCount = res ? res : 0;
         console.log('demandChangeCount', demandChangeCount);
-        return [{
-          dynamic: function () {
-            return {
-              title: 'Changes',
-              text: demandChangeCount.toString(),
-              color: 'red',
-              refresh: 10
-            };
-          },
-        }]
       });
+      return [{
+        dynamic: function() {
+          return {
+            title: 'Changes',
+            text: demandChangeCount.toString(),
+            color: 'red',
+            refresh: 10
+          };
+        },
+      }]
     },
   }
 );
