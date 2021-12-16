@@ -14,9 +14,9 @@ const onSetBtnCLicked = function(t) {
   const permission = t.getContext().permissions;
   console.log('permission', permission);
   t.set('card', 'shared', 'changeCount',  changeCount);
-  t.get('card', 'shared', 'changeCount').then(res => {
-    console.log('res', res);
-  });
+  // t.get('card', 'shared', 'changeCount').then(res => {
+  //   console.log('res', res);
+  // });
   console.log('after set', changeCount);
 }
 
