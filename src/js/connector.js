@@ -10,6 +10,8 @@ const onSaveBtnClicked = function (t, opts) {
 const onSetBtnCLicked = function(t) {
   console.log('before set', changeCount);
   changeCount = changeCount + 1;
+  const permission = t.getContext().permissions;
+  console.log('permission', permission);
   t.set('card', 'shared', 'changeCount', changeCount.toString()).then(res => {console.log(res);});
   console.log('after set', changeCount);
 }
