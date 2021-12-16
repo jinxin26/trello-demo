@@ -52,15 +52,20 @@ window.TrelloPowerUp.initialize(
       //     color: 'yellow'
       //   }];
       // });
-      return t.card('name')
-        .get('name')
-        .then(res => {
-          console.log('card-badges', res);
-          return [{
-            text: '1',
-            color: 'red'
-          }]
-        });
+      return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
+        console.log('card-badges by card id', res);
+        if(res) {
+          return t.card('name')
+            .get('name')
+            .then(res => {
+              console.log('card-badges', res);
+              return [{
+                text: '1',
+                color: 'red'
+              }]
+            });
+        }
+      })
     },
     'card-buttons': cardButtons,
     'card-detail-badges': function (t, opts) {
