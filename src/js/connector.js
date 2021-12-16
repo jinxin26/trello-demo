@@ -73,7 +73,8 @@ window.TrelloPowerUp.initialize(
             return {
               title: 'Changes',
               text: demandChangeCount || 0,
-              color: 'red'
+              color: 'red',
+              refresh: 10
             };
           },
         }];
