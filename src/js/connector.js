@@ -78,8 +78,8 @@ window.TrelloPowerUp.initialize(
         // // .get('name')
         // // .then(
         // //   function(cardName) {
-        .get('card', 'shared', 'changeCount').then(res => {
-            console.log('it is me', res)
+        .then(res => {
+            console.log('this is the card name: ', res)
           if(!res) {
             changeCount = 0;
             console.log('changeCount', changeCount);
