@@ -71,12 +71,12 @@ window.TrelloPowerUp.initialize(
           dynamic: function () {
             return {
               title: 'Changes',
-              text: res.toString(),
+              text: demandChangeCount.toString(),
               color: 'red',
               refresh: 10
             };
           },
-        }]
+        }];
       });
     },
   }
