@@ -55,16 +55,18 @@ window.TrelloPowerUp.initialize(
       return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
         demandChangeCount = res ? res : 0;
         console.log('demandChangeCount', demandChangeCount);
-        return [{
-          dynamic: function () {
-            return {
-              title: 'Changes',
-              text: demandChangeCount,
-              color: 'red',
-              refresh: 10
-            };
-          },
-        }];
+        if(demandChangeCount) {
+          return [{
+            dynamic: function () {
+              return {
+                title: 'Changes',
+                text: demandChangeCount,
+                color: 'red',
+                refresh: 10
+              };
+            },
+          }];
+        }
       });
     },
   }
