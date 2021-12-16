@@ -73,13 +73,13 @@ window.TrelloPowerUp.initialize(
       }];
     },
     'card-detail-badges': function (t, opts) {
-      return t.card('name')
+      return t.card('all')
         // .then(res => console.log('this is all', res))
         // // .get('name')
         // // .then(
         // //   function(cardName) {
         .then(res => {
-            console.log('this is the card name: ', res)
+            console.log('this is the card info: ', res)
           if(!res) {
             changeCount = 0;
             console.log('changeCount', changeCount);
