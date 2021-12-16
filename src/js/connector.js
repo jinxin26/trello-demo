@@ -43,7 +43,7 @@ window.TrelloPowerUp.initialize(
         console.log('card-badges by card id', res);
         if(res) {
               return [{
-                text: '',
+                text: '    ',
                 color: 'red'
               }]
         }
