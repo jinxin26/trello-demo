@@ -74,6 +74,7 @@ window.TrelloPowerUp.initialize(
     },
     'card-detail-badges': function (t, opts) {
       return t.card('all')
+        .get('card', 'shared', 'changeCount')
         // .then(res => console.log('this is all', res))
         // // .get('name')
         // // .then(
