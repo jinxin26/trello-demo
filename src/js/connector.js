@@ -1,9 +1,6 @@
 console.log('Hello World!');
 
-let demandChangeCount = t.get('card', 'shared', 'demandChangeCount').then(demandChangeCountInResponse => {
-  demandChangeCount = demandChangeCountInResponse ? demandChangeCountInResponse : 0;
-});
-console.log('demandChangeCount', demandChangeCount);
+let demandChangeCount;
 // const onSaveBtnClicked = function (t, opts) {
 //   changingTimes = changingTimes + 1;
 // }
@@ -66,9 +63,10 @@ window.TrelloPowerUp.initialize(
     },
     'card-buttons': cardButtons,
     'card-detail-badges': function (t, opts) {
-      return t.card('name')
-          .get('name')
+      return t.card('name', 'demandChangeCount')
+          .get('name', 'demandChangeCount')
           .then(function (cardName) {
+            console.log('demandChangeCount', 'demandChangeCount');
             return [{
               dynamic: function () {
                 return {
