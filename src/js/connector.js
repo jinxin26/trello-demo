@@ -72,7 +72,7 @@ window.TrelloPowerUp.initialize(
           dynamic: function () {
             return {
               title: 'Changes',
-              text: '2',
+              text: demandChangeCount,
               color: 'red',
               refresh: 10
             };
