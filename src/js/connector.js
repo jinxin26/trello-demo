@@ -13,7 +13,7 @@ const onSetBtnCLicked = function(t) {
   console.log('type', typeof changeCount);
   const permission = t.getContext().permissions;
   console.log('permission', permission);
-  t.set('card', 'shared', 'changeCount', '2').get('card', 'shared', 'changeCount').then(res => {
+  t.set('card', 'shared', 'changeCount', '2').then(t.get('card', 'shared', 'changeCount')).then(res => {
     console.log('res', res);
   });
   console.log('after set', changeCount);
