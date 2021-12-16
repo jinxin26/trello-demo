@@ -44,10 +44,10 @@ window.TrelloPowerUp.initialize(
         if(res) {
           return t.card('name')
             .get('name')
-            .then(res => {
-              console.log('card-badges', res);
+            .then(result => {
+              console.log('card-badges', result);
               return [{
-                text: demandChangeCount,
+                text: res,
                 color: 'red'
               }]
             });
