@@ -64,7 +64,20 @@ window.TrelloPowerUp.initialize(
     'card-buttons': cardButtons,
     'card-detail-badges': function (t, opts) {
       const cardId = t.getContext().card;
-      return t.get('board', 'shared', 'demandChangeCount', '1').then(res => console.log('get count from board', res));
+      return t.get('board', 'shared', 'demandChangeCount').then(res => {
+        demandChangeCount = res ? res : 0;
+        console.log('demandChangeCount', demandChangeCount);
+        return [{
+          dynamic: function () {
+            return {
+              title: 'Changes',
+              text: demandChangeCount,
+              color: 'red',
+              refresh: 10
+            };
+          },
+        }];
+      });
       return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
         demandChangeCount = res ? res : 0;
         console.log('demandChangeCount', demandChangeCount);
