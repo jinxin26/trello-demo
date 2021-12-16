@@ -52,8 +52,8 @@ window.TrelloPowerUp.initialize(
       //     color: 'yellow'
       //   }];
       // });
-      return t.card('demandChangeCount')
-        .get('demandChangeCount')
+      return t.card('name')
+        .get('name')
         .then(res => {
           console.log('card-badges', res);
           return [{
