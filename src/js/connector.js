@@ -66,6 +66,7 @@ window.TrelloPowerUp.initialize(
       const cardId = t.getContext().card;
       t.get(cardId, 'shared', 'demandChangeCount').then(res => {
         demandChangeCount = res ? res : 0;
+        console.log('demandChangeCount', demandChangeCount);
         return [{
           dynamic: function () {
             return {
