@@ -47,7 +47,10 @@ window.TrelloPowerUp.initialize(
             color: 'red'
           }]
         }
-        return [];
+        return [{
+          text: demandChangeCount,
+          color: 'yellow'
+        }];
       })
     },
     'card-buttons': cardButtons,
