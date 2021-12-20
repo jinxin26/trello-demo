@@ -14,8 +14,8 @@ const onBtnClick = function(t, opts) {
 };
 
 const cardButtons = function(t, opts) {
-  // get certain card info
-  return t.card('desc').then(res => console.log(res));
+  // get description of a certain card
+  t.card('desc').then(res => console.log(res));
   return [{
     text: 'Demand Changes',
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Emoji_u1f601.svg/2048px-Emoji_u1f601.svg.png',
