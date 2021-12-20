@@ -15,6 +15,7 @@ t.get(t.getContext().card, 'shared', 'demandInfo').then(res => {
             demandInfo.push(cards);
         });
         console.log('Init demandInfo by t.card', demandInfo);
+        t.set(t.getContext().card, 'shared', {demandInfo});
     }
     else {
         console.log('init demandInfo by t.get', res);
