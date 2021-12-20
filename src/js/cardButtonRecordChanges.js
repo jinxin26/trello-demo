@@ -11,11 +11,15 @@ t.cards("all").then(function (cards) {
 });
 
 let demandInfo = [];
-t.get(context.card, 'shared', 'desc').then(res => {
-    console.log('res', res);
-    demandInfo.push(res);
-})
-t.set(context.card, 'shared', {demandInfo});
+t.card('desc').then(res => {
+    console.log('init res', res);
+    if(demandInfo.length === 0) {
+        demandInfo.push(res);
+        t.set(context.card, 'shared', {demandInfo});
+    }
+    console.log('init demandInfo', demandInfo);
+});
+
 
 onRecordBtnClick = () => {
     demandChangeCount = demandChangeCount + 1;
@@ -27,11 +31,12 @@ onSaveBtnClick = () => {
     t.set(context.card, 'shared', {demandChangeCount});
     console.log("demandChangeCount is saved!");
     showDemandChangeCount(`total changes: ${demandChangeCount} (save successfully!)`);
-    t.get(context.card, 'shared', 'desc').then(res => {
-        console.log('res after save', res);
+    t.card('desc').then(res => {
+        console.log('changed res', res);
         demandInfo.push(res);
+        console.log('changed demandInfo', demandInfo);
     });
-    t.set(context.card, 'shared', {demandInfo});
+    t.set(context.card, 'shared', {demandInfo}).then(res => console.log('current demandInfo', res));
 }
 
 showDemandChangeCount = demandChangeCount => {
