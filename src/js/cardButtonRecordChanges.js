@@ -20,7 +20,8 @@ t.get(context.card, 'shared', 'demandInfo').then(res => {
     else {
         console.log('init demandInfo by t.get', res);
         demandInfo.push(res);
-        console.log('changed demandInfo', demandInfo);
+        t.set(context.card, 'shared', {demandInfo});
+        console.log(`changed demandInfo ${demandInfo}`);
     }
 });
 
