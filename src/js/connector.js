@@ -29,13 +29,14 @@ const cardButtons = function(t, opts) {
 window.TrelloPowerUp.initialize(
   {
     'board-buttons':function (t, opts) {
-      return [{
-        text:'Requirement Changes',
-        callback:t.modal({
-          title:'Requirement Changes Analysis',
-          fullscreen:true,
-        })
-      }];
+      return t.board("all").then(res => console.log(JSON.stringify(res, null, 2)));
+      // return [{
+      //   text:'Requirement Changes',
+      //   callback:t.modal({
+      //     title:'Requirement Changes Analysis',
+      //     fullscreen:true,
+      //   })
+      // }];
     },
     'card-badges': function(t, opts) {
       const cardId = t.getContext().card;
