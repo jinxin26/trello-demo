@@ -14,6 +14,8 @@ const onBtnClick = function(t, opts) {
 };
 
 const cardButtons = function(t, opts) {
+  // get certain card info
+  return t.card('desc').then(res => console.log(res));
   return [{
     text: 'Demand Changes',
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Emoji_u1f601.svg/2048px-Emoji_u1f601.svg.png',
@@ -29,7 +31,10 @@ const cardButtons = function(t, opts) {
 window.TrelloPowerUp.initialize(
   {
     'board-buttons':function (t, opts) {
-      return t.cards("all").then(res => console.log(JSON.stringify(res, null, 2)));
+      // t.card("all") can get all infos about a card
+      // use 'desc' can get description about a card
+      // return t.cards("all").then(res => console.log(JSON.stringify(res, null, 2)));
+
       // return t.board("all").then(res => console.log(JSON.stringify(res, null, 2))); // get card info (card id) on board
       return [{
         text:'Requirement Changes',
