@@ -7,23 +7,26 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
     showDemandChangeCount(`total changes: ${demandChangeCount}`);
 });
 
-let demandInfo = [];
-t.get(context.card, 'shared', 'demandInfo').then(res => {
-    if(res.length === 0) {
-        t.card("desc").then(cards => {
-            console.log('t.cards(\'desc\') res: ', JSON.stringify(cards, null, 2));
-            demandInfo.push(cards);
-            t.set(context.card, 'shared', {demandInfo});
-        });
-        console.log('Init demandInfo by t.card', demandInfo);
-    }
-    else {
-        console.log('init demandInfo by t.get', res);
-        demandInfo.push(res);
-        t.set(context.card, 'shared', {demandInfo});
-        console.log(`changed demandInfo ${demandInfo}`);
-    }
-});
+t.remove(context.card, 'shared', 'demandInfo').then(res => console.log(res));
+
+t.get(context.card, 'shared', 'demandInfo').then(res => console.log(res));
+// let demandInfo = [];
+// t.get(context.card, 'shared', 'demandInfo').then(res => {
+//     if(res.length === 0) {
+//         t.card("desc").then(cards => {
+//             console.log('t.cards(\'desc\') res: ', JSON.stringify(cards, null, 2));
+//             demandInfo.push(cards);
+//             t.set(context.card, 'shared', {demandInfo});
+//         });
+//         console.log('Init demandInfo by t.card', demandInfo);
+//     }
+//     else {
+//         console.log('init demandInfo by t.get', res);
+//         demandInfo.push(res);
+//         t.set(context.card, 'shared', {demandInfo});
+//         console.log('changed demandInfo', demandInfo[demandInfo.length - 1]);
+//     }
+// });
 
 onRecordBtnClick = () => {
     demandChangeCount = demandChangeCount + 1;
