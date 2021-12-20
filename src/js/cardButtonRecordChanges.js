@@ -13,9 +13,9 @@ t.get(context.card, 'shared', 'demandInfo').then(res => {
         t.card("desc").then(cards => {
             console.log('t.cards(\'desc\') res: ', JSON.stringify(cards, null, 2));
             demandInfo.push(cards);
+            t.set(context.card, 'shared', {demandInfo});
         });
         console.log('Init demandInfo by t.card', demandInfo);
-        t.set(context.card, 'shared', {demandInfo}).then(res => console.log('set', res));
     }
     else {
         console.log('init demandInfo by t.get', res);
