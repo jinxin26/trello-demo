@@ -11,15 +11,6 @@ t.cards("all").then(function (cards) {
 });
 
 let demandInfo = [];
-t.card('desc').then(res => {
-    console.log('init res', res);
-    if(demandInfo.length === 0) {
-        demandInfo.push(res);
-        t.set(context.card, 'shared', {demandInfo});
-    }
-    console.log('init demandInfo', demandInfo);
-});
-
 
 onRecordBtnClick = () => {
     demandChangeCount = demandChangeCount + 1;
