@@ -7,9 +7,9 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
     showDemandChangeCount(`total changes: ${demandChangeCount}`);
 });
 
-t.remove(context.card, 'shared', 'demandInfo').then(res => console.log(res));
+t.remove(context.card, 'shared', 'demandInfo').then(res => console.log("this is remove", res));
 
-t.get(context.card, 'shared', 'demandInfo').then(res => console.log(res));
+t.get(context.card, 'shared', 'demandInfo').then(res => console.log("can i get res?", res));
 // let demandInfo = [];
 // t.get(context.card, 'shared', 'demandInfo').then(res => {
 //     if(res.length === 0) {
