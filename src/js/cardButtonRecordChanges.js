@@ -9,7 +9,7 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
 
 let demandInfo = [];
 t.get(context.card, 'shared', 'demandInfo').then(res => {
-    if(demandInfo.length === 0) {
+    if(res.length === 0) {
         t.card("desc").then(cards => {
             console.log('t.cards(\'desc\') res: ', JSON.stringify(cards, null, 2));
             demandInfo.push(cards);
