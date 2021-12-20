@@ -14,14 +14,6 @@ const onBtnClick = function(t, opts) {
 const cardButtons = function(t, opts) {
   // get description of a certain card
   // t.card('desc').then(res => console.log(res));
-  t.card('desc').then(res => {
-    console.log('init res', res);
-    if(demandInfo.length === 0) {
-      demandInfo.push(res);
-      t.set(context.card, 'shared', {demandInfo});
-    }
-    console.log('init demandInfo', demandInfo);
-  });
 
   return [{
     text: 'Demand Changes',
