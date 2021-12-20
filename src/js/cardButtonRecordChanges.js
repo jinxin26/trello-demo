@@ -8,14 +8,14 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
 });
 
 let demandInfo = [];
-t.get(t.getContext().card, 'shared', 'demandInfo').then(res => {
+t.get(context.card, 'shared', 'demandInfo').then(res => {
     if(demandInfo.length === 0) {
         t.card("desc").then(cards => {
             console.log('t.cards(\'desc\') res: ', JSON.stringify(cards, null, 2));
             demandInfo.push(cards);
         });
         console.log('Init demandInfo by t.card', demandInfo);
-        t.set(t.getContext().card, 'shared', {demandInfo});
+        t.set(context.card, 'shared', {demandInfo}).then(res => console.log('set', res));
     }
     else {
         console.log('init demandInfo by t.get', res);
