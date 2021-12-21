@@ -11,7 +11,7 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
 // t.remove(context.card, 'shared', 'demandInfo').then(res => console.log("this is remove", res));
 
 // let demandInfo = [1, 2];
-let test = ['1', '2'];
+let test = ['1'];
 t.set(context.card, 'shared', {test});
 t.get(context.card, 'shared', 'test').then(res => console.log('test', res));
 // t.card("desc").then(curDesc => {
