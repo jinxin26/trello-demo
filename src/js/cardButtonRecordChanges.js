@@ -10,19 +10,22 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
 // use remove to delete a certain info
 // t.remove(context.card, 'shared', 'demandInfo').then(res => console.log("this is remove", res));
 
-let demandInfo = [];
-t.card("desc").then(curDesc => {
-    console.log('this is curDesc', curDesc);
-    t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
-        console.log('this is totalDesc', totalDesc);
-        if (!totalDesc) {
-            demandInfo.push(curDesc);
-            console.log('this is demandInfo', demandInfo);
-            t.set(context.card, 'shared', {demandInfo});
-            t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set', res));
-        }
-    })
-})
+// let demandInfo = [1, 2];
+let test = ['1', '2'];
+t.set(context.card, 'shared', {test});
+t.get(context.card, 'shared', 'test').then(res => console.log('test', res));
+// t.card("desc").then(curDesc => {
+//     console.log('this is curDesc', curDesc);
+//     t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
+//         console.log('this is totalDesc', totalDesc);
+//         if (!totalDesc) {
+//             demandInfo.push(curDesc);
+//             console.log('this is demandInfo', demandInfo);
+//             t.set(context.card, 'shared', {demandInfo});
+//             t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set', res));
+//         }
+//     })
+// })
 // t.get(context.card, 'shared', 'demandInfo').then(res => {
 //     if(res.length === 0) {
 //         t.card("desc").then(cards => {
