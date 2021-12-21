@@ -26,8 +26,9 @@ const cardButtons = function(t, opts) {
   // test: axios.post
   t.card('id').then(res => {
     console.log('id', res);
-    info.cardId = res;
+    info.cardId = res.id;
     t.card("desc").then(desc => {
+      console.log('desc', desc);
       info.descriptions = desc;
     });
     axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
