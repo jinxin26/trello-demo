@@ -24,13 +24,14 @@ const cardButtons = function(t, opts) {
   // t.card('desc').then(res => console.log(res));
 
   // test: axios.post
-  t.card('id').then(res => {
+  t.card('id','desc').then(res => {
     console.log('id', res);
     info.cardId = res.id;
-    t.card("desc").then(desc => {
-      console.log('desc', desc);
-      info.descriptions = desc;
-    });
+    info.descriptions = res.desc;
+    // t.card("desc").then(desc => {
+    //   console.log('desc', desc);
+    //   info.descriptions = desc;
+    // });
     axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
   })
 
