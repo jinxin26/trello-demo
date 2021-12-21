@@ -16,13 +16,15 @@ t.card("desc").then(curDesc => {
     t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
         console.log('this is totalDesc', totalDesc);
         if (!totalDesc) {
-            demandInfo.push(totalDesc);
+            demandInfo.push(curDesc);
             console.log('this is demandInfo', demandInfo);
             t.set(context.card, 'shared', {demandInfo}).then(res => {
                 console.log('init set', res);
                 t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set', res));
             });
         }
+        demandInfo.push(totalDesc);
+        console.log('demandInfo', demandInfo);
     })
 })
 // t.get(context.card, 'shared', 'demandInfo').then(res => {
