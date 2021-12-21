@@ -9,6 +9,10 @@
   "engines": {
     "node": "16"
   },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "http-proxy-middleware": "^2.0.1"
+  },
   "scripts": {
     "build": "parcel build src/html/*.html"
   },

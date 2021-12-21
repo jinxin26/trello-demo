@@ -65,17 +65,6 @@ onSaveBtnClick = () => {
                 t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
             });
         }
-        // t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
-        //     console.log('this is totalDesc after save', totalDesc);
-        //     if(curDesc !== totalDesc[totalDesc.length - 1]) {
-        //         demandInfo.push(curDesc);
-        //         console.log('this is demandInfo after save', demandInfo);
-        //         t.set(context.card, 'shared', {demandInfo}).then(res => {
-        //             console.log('set', res);
-        //             t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
-        //         }
-        //     )}
-        // })
     })
 }
 
