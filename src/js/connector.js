@@ -1,6 +1,19 @@
 import axios from 'axios';
 axios.get("http://localhost:8086/description/202112210003").then(res => console.log(res));
 
+let info = {
+  cardId: '',
+  description: '',
+}
+t.card('id').then(res => {
+  console.log('id', res);
+  info.cardId = res;
+  t.card("desc").then(desc => {
+    info.description = desc;
+  });
+  axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
+})
+
 console.log('Hello World!');
 
 let demandChangeCount;
