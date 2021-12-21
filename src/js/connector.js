@@ -3,16 +3,8 @@ axios.get("http://localhost:8086/description/202112210003").then(res => console.
 
 let info = {
   cardId: '',
-  description: '',
+  descriptions: '',
 }
-t.card('id').then(res => {
-  console.log('id', res);
-  info.cardId = res;
-  t.card("desc").then(desc => {
-    info.description = desc;
-  });
-  axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
-})
 
 console.log('Hello World!');
 
@@ -30,6 +22,16 @@ const onBtnClick = function(t, opts) {
 const cardButtons = function(t, opts) {
   // get description of a certain card
   // t.card('desc').then(res => console.log(res));
+
+  // test: axios.post
+  t.card('id').then(res => {
+    console.log('id', res);
+    info.cardId = res;
+    t.card("desc").then(desc => {
+      info.descriptions = desc;
+    });
+    axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
+  })
 
   return [{
     text: 'Demand Changes',
