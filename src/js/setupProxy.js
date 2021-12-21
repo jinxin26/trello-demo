@@ -2,10 +2,10 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
     app.use(
-        'https://friendly-sinoussi-3fd1f5.netlify.app',
+        '/description',
         createProxyMiddleware(
             {
-                        target: 'http://127.0.0.1:8086',
+                        target: 'http://localhost:8086',
                         changeOrigin: true
                     }
         )
