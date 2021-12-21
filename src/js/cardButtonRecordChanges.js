@@ -16,10 +16,12 @@ t.card("desc").then(curDesc => {
     t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
         console.log('this is totalDesc', totalDesc);
         if (!totalDesc) {
-            demandInfo.push(curDesc);
+            demandInfo.push(totalDesc);
             console.log('this is demandInfo', demandInfo);
-            t.set(context.card, 'shared', {demandInfo});
-            t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set', res));
+            t.set(context.card, 'shared', {demandInfo}).then(res => {
+                console.log('init set', res);
+                t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set', res));
+            });
         }
     })
 })
@@ -53,18 +55,25 @@ onSaveBtnClick = () => {
 
     t.card("desc").then(curDesc => {
         console.log('this is curDesc after save', curDesc);
-        t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
-            console.log('this is totalDesc after save', totalDesc);
-            if(curDesc !== totalDesc[totalDesc.length - 1]) {
-                demandInfo.push(curDesc);
-                console.log('this is demandInfo after save', demandInfo);
-                t.set(context.card, 'shared', {demandInfo}).then(res => {
-                    console.log('set', res);
-                    t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
-
-                }
-            )}
-        })
+        if(curDesc !== demandInfo[demandInfo.length - 1]) {
+            demandInfo.push(curDesc);
+            console.log('this is demandInfo after save', demandInfo);
+            t.set(context.card, 'shared', { demandInfo }).then(res => {
+                console.log('set', res);
+                t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
+            });
+        }
+        // t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
+        //     console.log('this is totalDesc after save', totalDesc);
+        //     if(curDesc !== totalDesc[totalDesc.length - 1]) {
+        //         demandInfo.push(curDesc);
+        //         console.log('this is demandInfo after save', demandInfo);
+        //         t.set(context.card, 'shared', {demandInfo}).then(res => {
+        //             console.log('set', res);
+        //             t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
+        //         }
+        //     )}
+        // })
     })
 }
 
