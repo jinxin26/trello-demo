@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.get("http://localhost:8086/description/202112210003").then(res => console.log(res));
+axios.get("https://friendly-sinoussi-3fd1f5.netlify.app/description/202112210003").then(res => console.log(res));
 
 console.log('Hello World!');
 
