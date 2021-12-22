@@ -1,10 +1,10 @@
 import axios from 'axios';
-axios.get("http://localhost:8086/description/202112210003").then(res => console.log(res));
-
-let info = {
-  cardId: '',
-  descriptions: '',
-}
+// axios.get("http://localhost:8086/description/202112210003").then(res => console.log(res));
+//
+// let info = {
+//   cardId: '',
+//   descriptions: '',
+// }
 
 console.log('Hello World!');
 
@@ -24,16 +24,12 @@ const cardButtons = function(t, opts) {
   // t.card('desc').then(res => console.log(res));
 
   // test: axios.post
-  t.card('id','desc').then(res => {
-    console.log('id', res);
-    info.cardId = res.id;
-    info.descriptions = res.desc;
-    // t.card("desc").then(desc => {
-    //   console.log('desc', desc);
-    //   info.descriptions = desc;
-    // });
-    axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
-  })
+  // t.card('id','desc').then(res => {
+  //   console.log('id', res);
+  //   info.cardId = res.id;
+  //   info.descriptions = res.desc;
+  //   axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
+  // })
 
   return [{
     text: 'Demand Changes',

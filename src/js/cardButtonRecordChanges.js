@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
 console.log("context=",context);
@@ -6,6 +8,11 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
     demandChangeCount = demandChangeCountInResponse ? demandChangeCountInResponse : 0;
     showDemandChangeCount(`total changes: ${demandChangeCount}`);
 });
+
+let info = {
+    cardId: '',
+    descriptions: '',
+}
 
 // use remove to delete a certain info
 // t.remove(context.card, 'shared', 'demandInfo').then(res => console.log("this is remove", res));
@@ -27,22 +34,6 @@ t.card("desc").then(curDesc => {
         console.log('demandInfo', demandInfo);
     })
 })
-// t.get(context.card, 'shared', 'demandInfo').then(res => {
-//     if(res.length === 0) {
-//         t.card("desc").then(cards => {
-//             console.log('t.cards(\'desc\') res: ', JSON.stringify(cards, null, 2));
-//             demandInfo.push(cards);
-//             t.set(context.card, 'shared', {demandInfo});
-//         });
-//         console.log('Init demandInfo by t.card', demandInfo);
-//     }
-//     else {
-//         console.log('init demandInfo by t.get', res);
-//         demandInfo.push(res);
-//         t.set(context.card, 'shared', {demandInfo});
-//         console.log('changed demandInfo', demandInfo[demandInfo.length - 1]);
-//     }
-// });
 
 onRecordBtnClick = () => {
     demandChangeCount = demandChangeCount + 1;
@@ -55,17 +46,25 @@ onSaveBtnClick = () => {
     console.log("demandChangeCount is saved!");
     showDemandChangeCount(`total changes: ${demandChangeCount} (save successfully!)`);
 
-    t.card("desc").then(curDesc => {
-        console.log('this is curDesc after save', curDesc);
-        if(curDesc !== demandInfo[demandInfo.length - 1]) {
-            demandInfo.push(curDesc);
-            console.log('this is demandInfo after save', demandInfo);
-            t.set(context.card, 'shared', { demandInfo }).then(res => {
-                console.log('set', res);
-                t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
-            });
-        }
-    })
+    t.card('id','desc').then(res => {
+          console.log('id', res);
+          info.cardId = res.id;
+          info.descriptions = res.desc;
+          axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
+        });
+
+
+    // t.card("desc").then(curDesc => {
+    //     console.log('this is curDesc after save', curDesc);
+    //     if(curDesc !== demandInfo[demandInfo.length - 1]) {
+    //         demandInfo.push(curDesc);
+    //         console.log('this is demandInfo after save', demandInfo);
+    //         t.set(context.card, 'shared', { demandInfo }).then(res => {
+    //             console.log('set', res);
+    //             t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set and save', res));
+    //         });
+    //     }
+    // })
 }
 
 showDemandChangeCount = demandChangeCount => {
