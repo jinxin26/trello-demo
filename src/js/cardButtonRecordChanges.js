@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
 console.log("context=",context);
@@ -33,18 +35,24 @@ t.card("desc").then(curDesc => {
     })
 })
 
-onRecordBtnClick = () => {
+const onRecordBtnClick = () => {
     demandChangeCount = demandChangeCount + 1;
     console.log("demandChangeCount is increased, now its value is: ", demandChangeCount);
     showDemandChangeCount(`total changes: ${demandChangeCount}`);
 }
 
-onSaveBtnClick = () => {
+const onSaveBtnClick = () => {
     t.set(context.card, 'shared', {demandChangeCount});
     console.log("demandChangeCount is saved!");
     showDemandChangeCount(`total changes: ${demandChangeCount} (save successfully!)`);
 
-    postDescription(info);
+    // postDescription(info);
+    t.card('id','desc').then(res => {
+        console.log('id', res);
+        info.cardId = res.id;
+        info.descriptions = res.desc;
+        axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
+    });
     // t.card("desc").then(curDesc => {
     //     console.log('this is curDesc after save', curDesc);
     //     if(curDesc !== demandInfo[demandInfo.length - 1]) {
@@ -58,7 +66,7 @@ onSaveBtnClick = () => {
     // })
 }
 
-showDemandChangeCount = demandChangeCount => {
+const showDemandChangeCount = demandChangeCount => {
     let element = document.getElementById("demandChangeCount");
     element.innerHTML = demandChangeCount;
 }
