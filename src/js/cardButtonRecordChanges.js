@@ -62,7 +62,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                 console.log('list', list);
                 for (let i = 0; i < list.data.length; i++) {
                     var button = document.createElement("button");
-                    button.value = list.data[i].version;
+                    button.value = '123456';
                     document.body.appendChild(button);
                 }
             })
