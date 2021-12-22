@@ -76,7 +76,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             console.log(typeof btnList);
             console.log('this is btnList', btnList);
             for (let i = 0; i < btnList.length; i++) {
-                if(btnList[i].textContent.substr(0, 1) !== "v") {
+                if(btnList[i].textContent.substr(0, 1) === "v") {
                     versionBtnList.push(btnList[i]);
                 }
             }
