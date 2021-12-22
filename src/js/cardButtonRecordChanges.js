@@ -85,8 +85,8 @@ window.onSaveBtnClick = function onSaveBtnClick () {
 
                     const btnList = document.getElementById("version record");
                     console.log('this is btnList', btnList);
-                    if(btnList != null) {
-                        btnList.parentNode.removeChild(btnList);
+                    while(btnList != null) {
+                        btnList.remove();
                     }
                     console.log('this is btnList', btnList);
                     for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
