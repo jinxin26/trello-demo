@@ -1,11 +1,10 @@
-import axios from 'axios';
+//import axios from 'axios';
 // axios.get("http://localhost:8086/description/202112210003").then(res => console.log(res));
 //
 // let info = {
 //   cardId: '',
 //   descriptions: '',
 // }
-
 console.log('Hello World!');
 
 let demandChangeCount;
