@@ -15,7 +15,7 @@ let info = {
     version: ''
 }
 
-window.getVersionRecord = function getVersionRecord() {
+const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
         console.log('length of list', list.data.length);
@@ -26,9 +26,9 @@ window.getVersionRecord = function getVersionRecord() {
             button.textContent = list.data[i].version;
             document.body.appendChild(button);
         }
-    })
+    });
 }
-
+getVersionRecord();
 
 // use remove to delete a certain info
 // t.remove(context.card, 'shared', 'demandInfo').then(res => console.log("this is remove", res));
