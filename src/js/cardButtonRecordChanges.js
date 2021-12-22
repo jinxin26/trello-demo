@@ -72,6 +72,12 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             console.log('this is post info', res);
 
             const btnList = document.getElementsByTagName("button");
+            for (let i = 0; i < btnList.length; i++) {
+                if(btnList[i].textContent.substr(0, 1) !== "v") {
+                    btnList.remove(i);
+                }
+            }
+            console.log('btnList length', btnList.length);
             if(btnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
