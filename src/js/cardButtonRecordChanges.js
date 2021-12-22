@@ -84,6 +84,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
                     const btnList = document.getElementById("version record");
+                    console.log('this is btnList', btnList);
                     document.removeChild(btnList);
                     console.log('this is btnList', btnList);
                     for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
