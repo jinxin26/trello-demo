@@ -15,7 +15,7 @@ let info = {
     version: ''
 }
 
-const getVersionRecord = () => {
+window.getVersionRecord = function getVersionRecord() {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
         console.log('length of list', list.data.length);
