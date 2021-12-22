@@ -48,11 +48,11 @@ window.onSaveBtnClick = function onSaveBtnClick () {
     showDemandChangeCount(`total changes: ${demandChangeCount} (save successfully!)`);
 
     // postDescription(info);
+    info.version = 'v1.0'
     t.card('id','desc').then(res => {
         console.log('id', res);
         info.cardId = res.id;
         info.descriptions = res.desc;
-        info.version = 'v1.0';
         axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
     });
     // t.card("desc").then(curDesc => {
