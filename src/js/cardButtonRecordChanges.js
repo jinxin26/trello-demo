@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
 console.log("context=",context);
@@ -46,14 +44,7 @@ onSaveBtnClick = () => {
     console.log("demandChangeCount is saved!");
     showDemandChangeCount(`total changes: ${demandChangeCount} (save successfully!)`);
 
-    t.card('id','desc').then(res => {
-          console.log('id', res);
-          info.cardId = res.id;
-          info.descriptions = res.desc;
-          axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
-        });
-
-
+    postDescription(info);
     // t.card("desc").then(curDesc => {
     //     console.log('this is curDesc after save', curDesc);
     //     if(curDesc !== demandInfo[demandInfo.length - 1]) {
