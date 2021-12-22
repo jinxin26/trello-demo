@@ -21,7 +21,7 @@ const getVersionRecord = () => {
         console.log('length of list', list.data.length);
         console.log('list', list);
         for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-            var button = document.createElement("button");
+            const button = document.createElement("button");
             console.log(list.data[i].version);
             button.textContent = list.data[i].version;
             document.body.appendChild(button);
@@ -71,7 +71,26 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         axios.post("http://localhost:8086/description", info).then(res => {
             console.log('this is post info', res);
 
-            getVersionRecord();
+            const btnList = document.getElementsByTagName("button");
+            if(btnList.length < 5) {
+                axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+
+                    for (let i = list.data.length - 1; i >= list.data.length - (5 - btnList.length); i--) {
+                        const button = document.createElement("button");
+                        console.log(list.data[i].version);
+                        button.textContent = list.data[i].version;
+                        document.body.appendChild(button);
+                    }
+                });
+            }
+            else {
+                axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+
+                    for (let i = list.data.length - 1, j = 0; i >= list.data.length - (5 - btnList.length), j < 5; i--, j++) {
+                        btnList[j].textContent = list.data[i].version;
+                    }
+                });
+            }
         });
     });
 
