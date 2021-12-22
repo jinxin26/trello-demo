@@ -35,13 +35,15 @@ t.card("desc").then(curDesc => {
     })
 })
 
-const onRecordBtnClick = () => {
+window.onSaveBtnClick=onSaveBtnClick;
+window.onRecordBtnClick=onRecordBtnClick;
+onRecordBtnClick = () => {
     demandChangeCount = demandChangeCount + 1;
     console.log("demandChangeCount is increased, now its value is: ", demandChangeCount);
     showDemandChangeCount(`total changes: ${demandChangeCount}`);
 }
 
-const onSaveBtnClick = () => {
+onSaveBtnClick = () => {
     t.set(context.card, 'shared', {demandChangeCount});
     console.log("demandChangeCount is saved!");
     showDemandChangeCount(`total changes: ${demandChangeCount} (save successfully!)`);
