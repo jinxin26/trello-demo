@@ -12,6 +12,7 @@ t.get(context.card, 'shared', 'demandChangeCount').then(demandChangeCountInRespo
 let info = {
     cardId: '',
     descriptions: '',
+    version: ''
 }
 
 // use remove to delete a certain info
@@ -51,6 +52,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         console.log('id', res);
         info.cardId = res.id;
         info.descriptions = res.desc;
+        info.version = `v${demandChangeCount}.0`;
         axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
     });
     // t.card("desc").then(curDesc => {
