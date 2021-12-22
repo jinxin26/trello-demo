@@ -53,19 +53,23 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         info.cardId = res.id;
         info.descriptions = res.desc;
         info.version = `v${demandChangeCount}.0`;
-        axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
+        axios.post("http://localhost:8086/description", info).then(res => {
+            console.log('this is post info', res);
+
+            axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+
+                console.log('length of list', list.data.length);
+                console.log('list', list);
+                for (let i = 0; i < list.data.length; i++) {
+                    var button = document.createElement("button");
+                    button.value = list[i].data.version;
+                    document.body.appendChild(button);
+                }
+            })
+        });
     });
 
-    axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
-        console.log('length of list', list.data.length);
-        console.log('list', list);
-        for (let i = 0; i < list.data.length; i++) {
-            var button = document.createElement("button");
-            button.value = list[i].version;
-            document.body.appendChild(button);
-        }
-    })
 
     // t.card("desc").then(curDesc => {
     //     console.log('this is curDesc after save', curDesc);
