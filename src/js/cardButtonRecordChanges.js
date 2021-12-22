@@ -52,7 +52,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         console.log('id', res);
         info.cardId = res.id;
         info.descriptions = res.desc;
-        info.version = `v${demandChangeCount}.0`;
+        info.version = 'v1.0';
         axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
     });
     // t.card("desc").then(curDesc => {
