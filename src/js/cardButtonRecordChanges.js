@@ -74,7 +74,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             const btnList = document.getElementsByTagName("button");
             for (let i = 0; i < btnList.length; i++) {
                 if(btnList[i].textContent.substr(0, 1) !== "v") {
-                    btnList.remove(i);
+                    btnList.slice(i, 1);
                 }
             }
             console.log('btnList length', btnList.length);
