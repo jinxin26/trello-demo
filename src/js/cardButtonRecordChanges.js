@@ -72,18 +72,19 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             console.log('this is post info', res);
 
             const btnList = document.getElementsByTagName("button");
+            let versionBtnList = [];
             console.log(typeof btnList);
             console.log('this is btnList', btnList);
             for (let i = 0; i < btnList.length; i++) {
                 if(btnList[i].textContent.substr(0, 1) !== "v") {
-
+                    versionBtnList.push(btnList[i]);
                 }
             }
-            console.log('btnList length', btnList.length);
-            if(btnList.length < 5) {
+            console.log('btnList length', versionBtnList.length);
+            if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
-                    for (let i = list.data.length - 1; i >= list.data.length - (5 - btnList.length); i--) {
+                    for (let i = list.data.length - 1; i >= list.data.length - (5 - versionBtnList.length); i--) {
                         const button = document.createElement("button");
                         console.log(list.data[i].version);
                         button.textContent = list.data[i].version;
@@ -94,8 +95,8 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             else {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
-                    for (let i = list.data.length - 1, j = 0; i >= list.data.length - (5 - btnList.length), j < 5; i--, j++) {
-                        btnList[j].textContent = list.data[i].version;
+                    for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5; i--, j++) {
+                        versionBtnList[j].textContent = list.data[i].version;
                     }
                 });
             }
