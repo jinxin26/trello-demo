@@ -72,9 +72,10 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             console.log('this is post info', res);
 
             const btnList = document.getElementsByTagName("button");
+            console.log(typeof btnList);
             for (let i = 0; i < btnList.length; i++) {
                 if(btnList[i].textContent.substr(0, 1) !== "v") {
-                    btnList.splice(i, 1);
+
                 }
             }
             console.log('btnList length', btnList.length);
