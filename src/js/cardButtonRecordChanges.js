@@ -73,6 +73,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
 
             const btnList = document.getElementsByTagName("button");
             console.log(typeof btnList);
+            console.log('this is btnList', btnList);
             for (let i = 0; i < btnList.length; i++) {
                 if(btnList[i].textContent.substr(0, 1) !== "v") {
 
