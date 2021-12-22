@@ -15,6 +15,21 @@ let info = {
     version: ''
 }
 
+const getVersionRecord = () => {
+    axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+
+        console.log('length of list', list.data.length);
+        console.log('list', list);
+        for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+            var button = document.createElement("button");
+            console.log(list.data[i].version);
+            button.textContent = list.data[i].version;
+            document.body.appendChild(button);
+        }
+    })
+}
+
+
 // use remove to delete a certain info
 // t.remove(context.card, 'shared', 'demandInfo').then(res => console.log("this is remove", res));
 
@@ -56,17 +71,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         axios.post("http://localhost:8086/description", info).then(res => {
             console.log('this is post info', res);
 
-            axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
-
-                console.log('length of list', list.data.length);
-                console.log('list', list);
-                for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-                    var button = document.createElement("button");
-                    console.log(list.data[i].version);
-                    button.textContent = list.data[i].version;
-                    document.body.appendChild(button);
-                }
-            })
+            getVersionRecord();
         });
     });
 
