@@ -21,7 +21,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     document.body.appendChild(versionRecord);
     versionRecord.id = "versionRecord";
 
-    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5 && i >= 1; i--) {
+    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5 && i >= 0; i--) {
         const button = document.createElement("button");
         console.log(list.data[i].version);
         button.textContent = list.data[i].version;
@@ -60,14 +60,10 @@ getVersionRecord();
 
 let demandInfo = [];
 t.card("desc").then(curDesc => {
-    console.log('this is curDesc', curDesc);
     t.get(context.card, 'shared', 'demandInfo').then(totalDesc => {
-        console.log('this is totalDesc', totalDesc);
         if (!totalDesc) {
             demandInfo.push(curDesc);
-            console.log('this is demandInfo', demandInfo);
             t.set(context.card, 'shared', {demandInfo}).then(res => {
-                console.log('init set', res);
                 t.get(context.card, 'shared', 'demandInfo').then(res => console.log('this is demandInfo after set', res));
             });
         }
