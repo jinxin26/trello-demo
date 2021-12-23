@@ -21,6 +21,13 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     document.body.appendChild(versionRecord);
     versionRecord.id = "versionRecord";
 
+    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
+        const button = document.createElement("button");
+        console.log(list.data[i].version);
+        button.textContent = list.data[i].version;
+        versionRecord.appendChild(button);
+    }
+
     if(list.data.length > 5) {
         //add btn for changing page
         const prevPage = document.createElement("button");
@@ -35,14 +42,6 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
             addBtnForVersionRecord(list, versionRecord, curPage);
         }
         versionRecord.appendChild(nextPage);
-
-    }
-
-    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
-        const button = document.createElement("button");
-        console.log(list.data[i].version);
-        button.textContent = list.data[i].version;
-        versionRecord.appendChild(button);
     }
 }
 
