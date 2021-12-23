@@ -15,8 +15,8 @@ let info = {
     version: ''
 }
 
-const addBtnForVersionRecord = (list, versionRecord) => {
-    for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+const addBtnForVersionRecord = (list, versionRecord, curPage) => {
+    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
         const button = document.createElement("button");
         console.log(list.data[i].version);
         button.textContent = list.data[i].version;
@@ -27,16 +27,21 @@ const addBtnForVersionRecord = (list, versionRecord) => {
 const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
         const versionRecord = document.getElementById("versionRecord");
-        addBtnForVersionRecord(list, versionRecord);
+        let curPage = 0;
+        addBtnForVersionRecord(list, versionRecord, curPage);
 
         if(list.data.length > 5) {
             //add btn for changing page
             const nextPage = document.createElement("button");
             nextPage.textContent = ">";
+            nextPage.onclick = function() {
+                curPage = curPage + 1;
+                addBtnForVersionRecord(list, versionRecord, curPage);
+            }
             versionRecord.appendChild(nextPage);
 
             const prevPage = document.createElement("button");
-            prevPage.textContent = ">";
+            prevPage.textContent = "<";
             versionRecord.appendChild(prevPage);
         }
     });
