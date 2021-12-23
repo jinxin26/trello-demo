@@ -102,14 +102,6 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         axios.post("http://localhost:8086/description", info).then(res => {
             console.log('this is post info', res);
 
-            // const btnList = document.getElementsByTagName("button");
-            // let versionBtnList = [];
-            // for (let i = 0; i < btnList.length; i++) {
-            //     if(btnList[i].textContent.substr(0, 1) === "v") {
-            //         versionBtnList.push(btnList[i]);
-            //     }
-            // }
-
             axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
                 let versionRecord = document.getElementById("versionRecord");
                 addBtnForVersionRecord(list, versionRecord, 0);
