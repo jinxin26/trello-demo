@@ -16,11 +16,12 @@ let info = {
 }
 
 const addBtnForVersionRecord = (list, versionRecord, curPage) => {
+    versionRecord.remove();
+    versionRecord = document.createElement("div");
+    document.body.appendChild(versionRecord);
+    versionRecord.id = "versionRecord";
+
     for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
-        versionRecord.remove();
-        versionRecord = document.createElement("div");
-        document.body.appendChild(versionRecord);
-        versionRecord.id = "versionRecord";
         const button = document.createElement("button");
         console.log(list.data[i].version);
         button.textContent = list.data[i].version;
