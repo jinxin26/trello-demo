@@ -17,6 +17,10 @@ let info = {
 
 const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
+        versionRecord.remove();
+        versionRecord = document.createElement("div");
+        document.body.appendChild(versionRecord);
+        versionRecord.id = "versionRecord";
         const button = document.createElement("button");
         console.log(list.data[i].version);
         button.textContent = list.data[i].version;
@@ -32,6 +36,11 @@ const getVersionRecord = () => {
 
         if(list.data.length > 5) {
             //add btn for changing page
+            const prevPage = document.createElement("button");
+            prevPage.textContent = "<";
+            versionRecord.appendChild(prevPage);
+
+
             const nextPage = document.createElement("button");
             nextPage.textContent = ">";
             nextPage.onclick = function() {
@@ -40,9 +49,6 @@ const getVersionRecord = () => {
             }
             versionRecord.appendChild(nextPage);
 
-            const prevPage = document.createElement("button");
-            prevPage.textContent = "<";
-            versionRecord.appendChild(prevPage);
         }
     });
 }
@@ -99,12 +105,12 @@ window.onSaveBtnClick = function onSaveBtnClick () {
 
             if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
-                    const versionRecord = document.getElementById("versionRecord");
-                    versionRecord.remove();
-                    const newVersionRecord = document.createElement("div");
-                    document.body.appendChild(newVersionRecord);
-                    newVersionRecord.id = "versionRecord";
-                    addBtnForVersionRecord(list, newVersionRecord);
+                    let versionRecord = document.getElementById("versionRecord");
+                    // versionRecord.remove();
+                    // const newVersionRecord = document.createElement("div");
+                    // document.body.appendChild(newVersionRecord);
+                    // newVersionRecord.id = "versionRecord";
+                    addBtnForVersionRecord(list, versionRecord);
                 });
             }
             else {
