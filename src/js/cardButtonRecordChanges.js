@@ -90,7 +90,8 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                     // }
                     // console.log('this is btnList', btnList);
                     const versionRecord = document.getElementById("versionRecord");
-                    for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5 - versionBtnList.length; i--, j++) {
+                    versionRecord.remove();
+                    for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
                         const button = document.createElement("button");
                         console.log(list.data[i].version);
                         button.textContent = list.data[i].version;
