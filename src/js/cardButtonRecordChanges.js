@@ -21,7 +21,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     document.body.appendChild(versionRecord);
     versionRecord.id = "versionRecord";
 
-    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
+    for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5 && i >= 1; i--) {
         const button = document.createElement("button");
         console.log(list.data[i].version);
         button.textContent = list.data[i].version;
