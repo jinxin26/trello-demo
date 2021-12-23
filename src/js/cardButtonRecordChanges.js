@@ -83,25 +83,19 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
-                    const btnList = document.getElementById("versionRecord");
-                    console.log('this is btnList', btnList);
-                    while(btnList != null) {
-                        btnList.remove();
-                    }
-                    console.log('this is btnList', btnList);
+                    // const btnList = document.getElementById("versionRecord");
+                    // console.log('this is btnList', btnList);
+                    // while(btnList != null) {
+                    //     btnList.remove();
+                    // }
+                    // console.log('this is btnList', btnList);
                     const versionRecord = document.getElementById("versionRecord");
-                    for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+                    for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5 - versionBtnList.length; i--, j++) {
                         const button = document.createElement("button");
                         console.log(list.data[i].version);
                         button.textContent = list.data[i].version;
                         versionRecord.appendChild(button);
                     }
-                    // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-                    //     const button = document.createElement("button");
-                    //     console.log(list.data[i].version);
-                    //     button.textContent = list.data[i].version;
-                    //     document.body.appendChild(button);
-                    // }
                 });
             }
             else {
