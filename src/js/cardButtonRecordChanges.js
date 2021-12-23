@@ -89,8 +89,10 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                     //     btnList.remove();
                     // }
                     // console.log('this is btnList', btnList);
-                    const versionRecord = document.getElementById("versionRecord");
+                    let versionRecord = document.getElementById("versionRecord");
                     versionRecord.remove();
+                    versionRecord = document.createElement("div");
+                    versionRecord.id = "versionRecord";
                     for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
                         const button = document.createElement("button");
                         console.log(list.data[i].version);
