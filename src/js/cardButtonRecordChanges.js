@@ -34,13 +34,22 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         //add btn for changing page
         const prevPage = document.createElement("button");
         prevPage.textContent = "<";
+        prevPage.onclick = function() {
+            if(curPage > 0) {
+                curPage = curPage - 1;
+                addBtnForVersionRecord(list, versionRecord, curPage);
+            }
+        }
         versionRecord.appendChild(prevPage);
 
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
         nextPage.onclick = function() {
-            curPage = curPage + 1;
-            addBtnForVersionRecord(list, versionRecord, curPage);
+            if(curPage <= list.data.length / 5 + 1)
+            {
+                curPage = curPage + 1;
+                addBtnForVersionRecord(list, versionRecord, curPage);
+            }
         }
         versionRecord.appendChild(nextPage);
     }
