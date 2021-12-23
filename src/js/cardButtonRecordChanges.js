@@ -28,11 +28,14 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         versionRecord.appendChild(button);
     }
 
+    const pageDiv = document.createElement("div");
+    pageDiv.id = "pageDiv";
+    document.body.appendChild(pageDiv);
     if(list.data.length > 5 || curPage !== 0) {
         //add btn for changing page
         const prevPage = document.createElement("button");
         prevPage.textContent = "<";
-        versionRecord.appendChild(prevPage);
+        pageDiv.appendChild(prevPage);
 
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
@@ -40,7 +43,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
             curPage = curPage + 1;
             addBtnForVersionRecord(list, versionRecord, curPage);
         }
-        versionRecord.appendChild(nextPage);
+        pageDiv.appendChild(nextPage);
     }
 }
 
