@@ -28,29 +28,26 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         versionRecord.appendChild(button);
     }
 
-    const pageDiv = document.createElement("div");
-    pageDiv.id = "pageDiv";
-    document.body.appendChild(pageDiv);
-    if(list.data.length > 5 || curPage !== 0) {
-        //add btn for changing page
-        const prevPage = document.createElement("button");
-        prevPage.textContent = "<";
-        pageDiv.appendChild(prevPage);
-
-        const nextPage = document.createElement("button");
-        nextPage.textContent = ">";
-        nextPage.onclick = function() {
-            curPage = curPage + 1;
-            addBtnForVersionRecord(list, versionRecord, curPage);
-        }
-        pageDiv.appendChild(nextPage);
-    }
 }
 
 const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
         const versionRecord = document.getElementById("versionRecord");
         let curPage = 0;
+        if(list.data.length > 5 || curPage !== 0) {
+            //add btn for changing page
+            const prevPage = document.createElement("button");
+            prevPage.textContent = "<";
+            versionRecord.appendChild(prevPage);
+
+            const nextPage = document.createElement("button");
+            nextPage.textContent = ">";
+            nextPage.onclick = function() {
+                curPage = curPage + 1;
+                addBtnForVersionRecord(list, versionRecord, curPage);
+            }
+            versionRecord.appendChild(nextPage);
+        }
         addBtnForVersionRecord(list, versionRecord, curPage);
     });
 }
