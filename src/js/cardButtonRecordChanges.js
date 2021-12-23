@@ -26,17 +26,8 @@ const addBtnForVersionRecord = (list, versionRecord) => {
 
 const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
-
-        console.log('length of list', list.data.length);
-        console.log('list', list);
         const versionRecord = document.getElementById("versionRecord");
         addBtnForVersionRecord(list, versionRecord);
-        // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-        //     const button = document.createElement("button");
-        //     console.log(list.data[i].version);
-        //     button.textContent = list.data[i].version;
-        //     versionRecord.appendChild(button);
-        // }
     });
 }
 getVersionRecord();
@@ -89,26 +80,27 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                     versionBtnList.push(btnList[i]);
                 }
             }
-            console.log('btnList length', versionBtnList.length);
-            // const versionBtnList = document.getElementById("versionRecord");
+
+            const versionRecord = document.getElementById("versionRecord");
             if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
-
-                    const versionRecord = document.getElementById("versionRecord");
                     versionRecord.remove();
                     const newVersionRecord = document.createElement("div");
                     document.body.appendChild(newVersionRecord);
                     newVersionRecord.id = "versionRecord";
                     addBtnForVersionRecord(list, newVersionRecord);
-                    // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-                    //     const button = document.createElement("button");
-                    //     console.log(list.data[i].version);
-                    //     button.textContent = list.data[i].version;
-                    //     newVersionRecord.appendChild(button);
-                    // }
                 });
             }
             else {
+                //add btn for change page
+                const nextPage = document.createElement("button");
+                nextPage.textContent = ">";
+                versionRecord.appendChild(nextPage);
+
+                const prevPage = document.createElement("button");
+                prevPage.textContent = ">";
+                versionRecord.appendChild(prevPage);
+
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
                     for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5; i--, j++) {
@@ -118,8 +110,6 @@ window.onSaveBtnClick = function onSaveBtnClick () {
             }
         });
     });
-
-
 
     // t.card("desc").then(curDesc => {
     //     console.log('this is curDesc after save', curDesc);
