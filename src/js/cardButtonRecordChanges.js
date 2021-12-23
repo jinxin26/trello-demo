@@ -21,6 +21,23 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     document.body.appendChild(versionRecord);
     versionRecord.id = "versionRecord";
 
+    if(list.data.length > 5) {
+        //add btn for changing page
+        const prevPage = document.createElement("button");
+        prevPage.textContent = "<";
+        versionRecord.appendChild(prevPage);
+
+
+        const nextPage = document.createElement("button");
+        nextPage.textContent = ">";
+        nextPage.onclick = function() {
+            curPage = curPage + 1;
+            addBtnForVersionRecord(list, versionRecord, curPage);
+        }
+        versionRecord.appendChild(nextPage);
+
+    }
+
     for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5; i--) {
         const button = document.createElement("button");
         console.log(list.data[i].version);
@@ -34,23 +51,6 @@ const getVersionRecord = () => {
         const versionRecord = document.getElementById("versionRecord");
         let curPage = 0;
         addBtnForVersionRecord(list, versionRecord, curPage);
-
-        if(list.data.length > 5) {
-            //add btn for changing page
-            const prevPage = document.createElement("button");
-            prevPage.textContent = "<";
-            versionRecord.appendChild(prevPage);
-
-
-            const nextPage = document.createElement("button");
-            nextPage.textContent = ">";
-            nextPage.onclick = function() {
-                curPage = curPage + 1;
-                addBtnForVersionRecord(list, versionRecord, curPage);
-            }
-            versionRecord.appendChild(nextPage);
-
-        }
     });
 }
 getVersionRecord();
