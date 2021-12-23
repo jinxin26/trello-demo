@@ -20,11 +20,11 @@ const getVersionRecord = () => {
 
         console.log('length of list', list.data.length);
         console.log('list', list);
+        const versionRecord = document.getElementById("versionRecord");
         for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
             const button = document.createElement("button");
             console.log(list.data[i].version);
             button.textContent = list.data[i].version;
-            const versionRecord = document.getElementById("versionRecord");
             versionRecord.appendChild(button);
         }
     });
