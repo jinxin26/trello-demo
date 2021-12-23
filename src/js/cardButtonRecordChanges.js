@@ -15,18 +15,28 @@ let info = {
     version: ''
 }
 
+const addBtnForVersionRecord = (list, versionRecord) => {
+    for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+        const button = document.createElement("button");
+        console.log(list.data[i].version);
+        button.textContent = list.data[i].version;
+        versionRecord.appendChild(button);
+    }
+}
+
 const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
         console.log('length of list', list.data.length);
         console.log('list', list);
         const versionRecord = document.getElementById("versionRecord");
-        for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-            const button = document.createElement("button");
-            console.log(list.data[i].version);
-            button.textContent = list.data[i].version;
-            versionRecord.appendChild(button);
-        }
+        addBtnForVersionRecord(list, versionRecord);
+        // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+        //     const button = document.createElement("button");
+        //     console.log(list.data[i].version);
+        //     button.textContent = list.data[i].version;
+        //     versionRecord.appendChild(button);
+        // }
     });
 }
 getVersionRecord();
@@ -72,34 +82,30 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         axios.post("http://localhost:8086/description", info).then(res => {
             console.log('this is post info', res);
 
-            const btnList = document.getElementsByTagName("button");
-            let versionBtnList = [];
-            for (let i = 0; i < btnList.length; i++) {
-                if(btnList[i].textContent.substr(0, 1) === "v") {
-                    versionBtnList.push(btnList[i]);
-                }
-            }
-            console.log('btnList length', versionBtnList.length);
+            // const btnList = document.getElementsByTagName("button");
+            // let versionBtnList = [];
+            // for (let i = 0; i < btnList.length; i++) {
+            //     if(btnList[i].textContent.substr(0, 1) === "v") {
+            //         versionBtnList.push(btnList[i]);
+            //     }
+            // }
+            // console.log('btnList length', versionBtnList.length);
+            const versionBtnList = document.getElementById("versionRecord");
             if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
-                    // const btnList = document.getElementById("versionRecord");
-                    // console.log('this is btnList', btnList);
-                    // while(btnList != null) {
-                    //     btnList.remove();
-                    // }
-                    // console.log('this is btnList', btnList);
                     const versionRecord = document.getElementById("versionRecord");
                     versionRecord.remove();
                     const newVersionRecord = document.createElement("div");
                     document.body.appendChild(newVersionRecord);
                     newVersionRecord.id = "versionRecord";
-                    for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-                        const button = document.createElement("button");
-                        console.log(list.data[i].version);
-                        button.textContent = list.data[i].version;
-                        newVersionRecord.appendChild(button);
-                    }
+                    addBtnForVersionRecord(list, newVersionRecord);
+                    // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+                    //     const button = document.createElement("button");
+                    //     console.log(list.data[i].version);
+                    //     button.textContent = list.data[i].version;
+                    //     newVersionRecord.appendChild(button);
+                    // }
                 });
             }
             else {
