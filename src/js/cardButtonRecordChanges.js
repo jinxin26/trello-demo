@@ -34,11 +34,13 @@ const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
         const versionRecord = document.getElementById("versionRecord");
         let curPage = 0;
-        if(list.data.length > 5 || curPage !== 0) {
+        const pageDiv = document.createElement("div");
+        document.body.appendChild(pageDiv);
+        if(list.data.length > 5) {
             //add btn for changing page
             const prevPage = document.createElement("button");
             prevPage.textContent = "<";
-            versionRecord.appendChild(prevPage);
+            pageDiv.appendChild(prevPage);
 
             const nextPage = document.createElement("button");
             nextPage.textContent = ">";
@@ -46,7 +48,7 @@ const getVersionRecord = () => {
                 curPage = curPage + 1;
                 addBtnForVersionRecord(list, versionRecord, curPage);
             }
-            versionRecord.appendChild(nextPage);
+            pageDiv.appendChild(nextPage);
         }
         addBtnForVersionRecord(list, versionRecord, curPage);
     });
