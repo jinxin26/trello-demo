@@ -28,7 +28,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         versionRecord.appendChild(button);
     }
 
-    if(list.data.length > 5 && curPage !== 0) {
+    if(list.data.length > 5 || curPage !== 0) {
         //add btn for changing page
         const prevPage = document.createElement("button");
         prevPage.textContent = "<";
