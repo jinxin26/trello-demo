@@ -92,6 +92,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                     const versionRecord = document.getElementById("versionRecord");
                     versionRecord.remove();
                     const newVersionRecord = document.createElement("div");
+                    document.body.appendChild(newVersionRecord);
                     newVersionRecord.id = "versionRecord";
                     for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
                         const button = document.createElement("button");
