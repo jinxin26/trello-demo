@@ -25,6 +25,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         const button = document.createElement("button");
         console.log(list.data[i].version);
         button.textContent = list.data[i].version;
+        button.addEventListener('click', onVersionBtnCLick(button.textContent), false);
         versionRecord.appendChild(button);
     }
 
@@ -53,6 +54,10 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         }
         versionRecord.appendChild(nextPage);
     }
+}
+
+function onVersionBtnCLick(text) {
+    console.log('text', text);
 }
 
 const getVersionRecord = () => {
