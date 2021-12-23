@@ -117,11 +117,15 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                 });
             }
             else {
+                // axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+                //
+                //     for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5; i--, j++) {
+                //         versionBtnList[j].textContent = list.data[i].version;
+                //     }
+                // });
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
-
-                    for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5; i--, j++) {
-                        versionBtnList[j].textContent = list.data[i].version;
-                    }
+                    let versionRecord = document.getElementById("versionRecord");
+                    addBtnForVersionRecord(list, versionRecord, 0);
                 });
             }
         });
