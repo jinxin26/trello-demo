@@ -82,15 +82,15 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         axios.post("http://localhost:8086/description", info).then(res => {
             console.log('this is post info', res);
 
-            // const btnList = document.getElementsByTagName("button");
-            // let versionBtnList = [];
-            // for (let i = 0; i < btnList.length; i++) {
-            //     if(btnList[i].textContent.substr(0, 1) === "v") {
-            //         versionBtnList.push(btnList[i]);
-            //     }
-            // }
-            // console.log('btnList length', versionBtnList.length);
-            const versionBtnList = document.getElementById("versionRecord");
+            const btnList = document.getElementsByTagName("button");
+            let versionBtnList = [];
+            for (let i = 0; i < btnList.length; i++) {
+                if(btnList[i].textContent.substr(0, 1) === "v") {
+                    versionBtnList.push(btnList[i]);
+                }
+            }
+            console.log('btnList length', versionBtnList.length);
+            // const versionBtnList = document.getElementById("versionRecord");
             if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
