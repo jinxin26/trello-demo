@@ -24,8 +24,8 @@ const getVersionRecord = () => {
             const button = document.createElement("button");
             console.log(list.data[i].version);
             button.textContent = list.data[i].version;
-            const versionRecord = document.getElementById("versionRecord");
-            versionRecord.appendChild(button);
+            // const versionRecord = document.getElementById("versionRecord");
+            document.body.appendChild(button);
         }
     });
 }
