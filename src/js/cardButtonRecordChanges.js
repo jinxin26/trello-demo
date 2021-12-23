@@ -89,13 +89,13 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                         btnList.remove();
                     }
                     console.log('this is btnList', btnList);
-                    for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
-                        const button = document.createElement("button");
-                        console.log(list.data[i].version);
-                        button.textContent = list.data[i].version;
-                        const versionRecord = document.getElementById("versionRecord");
-                        versionRecord.appendChild(button);
-                    }
+                    // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
+                    //     const button = document.createElement("button");
+                    //     console.log(list.data[i].version);
+                    //     button.textContent = list.data[i].version;
+                    //     const versionRecord = document.getElementById("versionRecord");
+                    //     versionRecord.appendChild(button);
+                    // }
                     // for (let i = list.data.length - 1; i >= list.data.length - 5; i--) {
                     //     const button = document.createElement("button");
                     //     console.log(list.data[i].version);
