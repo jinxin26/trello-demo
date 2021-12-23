@@ -45,7 +45,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
         nextPage.onclick = function() {
-            if(curPage <= list.data.length / 5 + 1)
+            if(curPage <= list.data.length / 5)
             {
                 curPage = curPage + 1;
                 addBtnForVersionRecord(list, versionRecord, curPage);
