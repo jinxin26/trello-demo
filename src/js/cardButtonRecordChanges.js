@@ -28,6 +28,17 @@ const getVersionRecord = () => {
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
         const versionRecord = document.getElementById("versionRecord");
         addBtnForVersionRecord(list, versionRecord);
+
+        if(list.data.length > 5) {
+            //add btn for changing page
+            const nextPage = document.createElement("button");
+            nextPage.textContent = ">";
+            versionRecord.appendChild(nextPage);
+
+            const prevPage = document.createElement("button");
+            prevPage.textContent = ">";
+            versionRecord.appendChild(prevPage);
+        }
     });
 }
 getVersionRecord();
@@ -81,9 +92,9 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                 }
             }
 
-            const versionRecord = document.getElementById("versionRecord");
             if(versionBtnList.length < 5) {
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+                    const versionRecord = document.getElementById("versionRecord");
                     versionRecord.remove();
                     const newVersionRecord = document.createElement("div");
                     document.body.appendChild(newVersionRecord);
@@ -92,15 +103,6 @@ window.onSaveBtnClick = function onSaveBtnClick () {
                 });
             }
             else {
-                //add btn for change page
-                const nextPage = document.createElement("button");
-                nextPage.textContent = ">";
-                versionRecord.appendChild(nextPage);
-
-                const prevPage = document.createElement("button");
-                prevPage.textContent = ">";
-                versionRecord.appendChild(prevPage);
-
                 axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
 
                     for (let i = list.data.length - 1, j = 0; i >= list.data.length - 5, j < 5; i--, j++) {
