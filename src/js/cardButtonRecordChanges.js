@@ -44,7 +44,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
         nextPage.onclick = function() {
-            if(curPage > list.data.length / 5)
+            if(curPage >= list.data.length / 5)
             {
                 nextPage.disabled = true;
             }
