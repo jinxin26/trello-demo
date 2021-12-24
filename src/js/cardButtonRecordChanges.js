@@ -32,24 +32,24 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         const prevPage = document.createElement("button");
         prevPage.textContent = "<";
         prevPage.onclick = function() {
-            if(curPage > 0) {
-                curPage = curPage - 1;
-                addBtnForVersionRecord(list, versionRecord, curPage);
-            }
-            else {
+            if(curPage <= 0) {
                 prevPage.disabled = true;
             }
+            curPage = curPage - 1;
+            addBtnForVersionRecord(list, versionRecord, curPage);
+
         }
         versionRecord.appendChild(prevPage);
 
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
         nextPage.onclick = function() {
-            if(curPage <= list.data.length / 5)
+            if(curPage > list.data.length / 5)
             {
-                curPage = curPage + 1;
-                addBtnForVersionRecord(list, versionRecord, curPage);
+                nextPage.disabled = true;
             }
+            curPage = curPage + 1;
+            addBtnForVersionRecord(list, versionRecord, curPage);
         }
         versionRecord.appendChild(nextPage);
     }
