@@ -36,6 +36,9 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
                 curPage = curPage - 1;
                 addBtnForVersionRecord(list, versionRecord, curPage);
             }
+            else {
+                prevPage.disabled = true;
+            }
         }
         versionRecord.appendChild(prevPage);
 
