@@ -61,6 +61,12 @@ function onVersionBtnCLick(text) {
     console.log('text', text);
     axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
         console.log('length of list', list.data.length);
+
+        const versionNum = parseInt(text.substring(1));
+        const lastVersionNum = versionNum - 1;
+        const lastVersionText = `v${lastVersionNum}.0`;
+        console.log("2.lastVersionNum: ", lastVersionNum);
+        console.log("3.lastVersionText: ", lastVersionText);
     })
 }
 
