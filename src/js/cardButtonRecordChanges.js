@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Diff } from 'diff';
 
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
@@ -80,12 +81,17 @@ function onVersionBtnCLick(text) {
         });
         console.log("4.currentData: ", currentData);
         console.log("5.oldData: ", oldData);
-    //     const diff = Diff.diffChars(oldData.descriptions, currentData.descriptions);
-    //     console.log("6.versionDiff: ", diff);
-    //     t.set(context.card, 'shared', {
-    //         versionDiff: diff,
-    //         savedTime: savedDateTime
-    //     }).then(() => console.log('7.set diff version'))
+
+        const diff = Diff.diffChars(oldData.descriptions, currentData.descriptions);
+        console.log("6.versionDiff: ", diff);
+
+        return t.modal({
+            url: './versionComparisons.html',
+            height: 500,
+            fullscreen: false,
+            title: 'Description Comparison'
+        })
+
     });
 
 }
