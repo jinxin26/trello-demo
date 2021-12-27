@@ -85,12 +85,12 @@ function onVersionBtnCLick(text) {
         const diff = Diff.diffChars(oldData.descriptions, currentData.descriptions);
         console.log("6.versionDiff: ", diff);
 
-        // return t.modal({
-        //     url: './versionComparisons.html',
-        //     height: 500,
-        //     fullscreen: false,
-        //     title: 'Description Comparison'
-        // })
+        return t.modal({
+            url: './versionComparisons.html',
+            height: 500,
+            fullscreen: false,
+            title: 'Description Comparison'
+        })
 
     });
 
