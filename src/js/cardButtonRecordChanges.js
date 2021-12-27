@@ -67,7 +67,27 @@ function onVersionBtnCLick(text) {
         const lastVersionText = `v${lastVersionNum}.0`;
         console.log("2.lastVersionNum: ", lastVersionNum);
         console.log("3.lastVersionText: ", lastVersionText);
-    })
+
+        let currentData;
+        let oldData;
+        list.data.forEach(item => {
+            if (item.version === text) {
+                currentData = item;
+            }
+            if (item.version === lastVersionText) {
+                oldData = item;
+            }
+        });
+        console.log("4.currentData: ", currentData);
+        console.log("5.oldData: ", oldData);
+    //     const diff = Diff.diffChars(oldData.descriptions, currentData.descriptions);
+    //     console.log("6.versionDiff: ", diff);
+    //     t.set(context.card, 'shared', {
+    //         versionDiff: diff,
+    //         savedTime: savedDateTime
+    //     }).then(() => console.log('7.set diff version'))
+    });
+
 }
 
 const getVersionRecord = () => {
