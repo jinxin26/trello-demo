@@ -87,6 +87,7 @@ function onVersionBtnCLick(text) {
 
         return t.modal({
             url: './versionComparisons.html',
+            args: {text: diff},
             height: 500,
             fullscreen: false,
             title: 'Description Comparison'
