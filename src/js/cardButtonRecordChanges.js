@@ -59,6 +59,9 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
 
 function onVersionBtnCLick(text) {
     console.log('text', text);
+    axios.get(`http://localhost:8086/description/${context.card}`).then(list => {
+        console.log('length of list', list.data.length);
+    })
 }
 
 const getVersionRecord = () => {
