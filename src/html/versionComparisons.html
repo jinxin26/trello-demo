@@ -15,7 +15,8 @@
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
     let span = null;
-    t.arg('text').then(res => console.log('this is res', res));
+    const diffFromModal = t.arg('text');
+    console.log("this is diffFromModal", diffFromModal);
     // t.get(context.card, 'shared', 'versionDiff').then(function (versionDiff) {
     //     console.log('versionDiff in html', versionDiff);
     //     // if(diff === '' || diff === undefined || diff === null){
