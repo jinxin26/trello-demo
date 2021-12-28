@@ -52,11 +52,7 @@ const getBoardButton = (t, opts) => {
         title: 'Requirement Change Analysis',
         // url: './requirementChangeAnalysis.html',
         url: './changeCurrentPage.html',
-        fullscreen: true,
-        actions:[{
-          url: 'https://google.com',
-          position: 'right'
-        }]
+        fullscreen: true
       })
     }
   }];
