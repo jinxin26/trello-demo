@@ -42,9 +42,9 @@ t.cards('id', 'labels', 'name', 'dateLastActivity')
     .then(cards => {
         console.log('cards: ', cards);
         cards.forEach(cardInfo => {
-            t.get(cardInfo.id, 'shared', 'requirementChangeCount')
+            t.get(cardInfo.id, 'shared', 'demandChangeCount')
                 .then(requirementChangeCount => {
-                    console.log('requirementChangeCount: ',requirementChangeCount);
+                    console.log('demandChangeCount: ',requirementChangeCount);
                     cardsInfo = [...cardsInfo, {...cardInfo, requirementChangeCount}];
                 })
         });
@@ -72,7 +72,7 @@ drawHistogram = () => {
         const cardCount = list.length;
         let changeCount = 0;
         _.forEach(list, singleCard => {
-            const singleCount = _.get(singleCard, 'requirementChangeCount', 0);
+            const singleCount = _.get(singleCard, 'demandChangeCount', 0);
             changeCount += singleCount;
         });
         console.log('twoWeeksStart: ', twoWeeksStart);
@@ -203,7 +203,7 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
     _.forEach(dataSet, (value, key) => {
         let changeCount = 0;
         _.forEach(value, singleCard => {
-            const singleCount = _.get(singleCard, 'requirementChangeCount', 0);
+            const singleCount = _.get(singleCard, 'demandChangeCount', 0);
             changeCount += singleCount;
         });
         data = [...data, {name: key, value: changeCount}];
