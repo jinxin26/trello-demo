@@ -42,22 +42,25 @@ const cardButtons = function(t, opts) {
   }];
 }
 
+const getBoardButton = (t, opts) => {
+  return [{
+    icon: 'https://uxwing.com/wp-content/themes/uxwing/download/19-e-commerce-currency-shopping/change-exchange.png',
+    text: 'Requirement Changes',
+    condition: 'always',
+    callback: function (t, opt) {
+      t.modal({
+        title: 'Requirement Change Analysis',
+        url: './requirementChangeAnalysis.html',
+        fullscreen: true,
+      })
+    }
+  }];
+}
+
+
 window.TrelloPowerUp.initialize(
   {
-    'board-buttons':function (t, opts) {
-      // t.card("all") can get all infos about a card
-      // use 'desc' can get description about a card
-      // return t.cards("all").then(res => console.log(JSON.stringify(res, null, 2)));
-
-      // return t.board("all").then(res => console.log(JSON.stringify(res, null, 2))); // get card info (card id) on board
-      return [{
-        text:'Requirement Changes',
-        callback:t.modal({
-          title:'Requirement Changes Analysis',
-          fullscreen:true,
-        })
-      }];
-    },
+    'board-buttons':getBoardButton,
     'card-badges': function(t, opts) {
       const cardId = t.getContext().card;
       return t.get(cardId, 'shared', 'demandChangeCount').then(res => {
@@ -92,3 +95,10 @@ window.TrelloPowerUp.initialize(
     },
   }
 );
+
+// t.card("all") can get all infos about a card
+// use 'desc' can get description about a card
+// return t.cards("all").then(res => console.log(JSON.stringify(res, null, 2)));
+
+// return t.board("all").then(res => console.log(JSON.stringify(res, null, 2))); // get card info (card id) on board
+
