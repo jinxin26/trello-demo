@@ -54,7 +54,7 @@ const getBoardButton = (t, opts) => {
         url: './changeCurrentPage.html',
         fullscreen: true,
         actions:[{
-          url: './requirementChangeAnalysis.html',
+          url: 'https://google.com',
           position: 'left'
         }]
       })
