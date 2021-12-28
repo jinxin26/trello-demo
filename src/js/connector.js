@@ -52,11 +52,7 @@ const getBoardButton = (t, opts) => {
         title: 'Requirement Change Analysis',
         url: './requirementChangeAnalysis.html',
         fullscreen: true,
-      }, {
-          title: 'AnotherPage',
-          url: './requirementChangeAnalysis.html',
-          fullscreen: true,
-        })
+      })
       // t.modal({
       //   title: 'Requirement Change Analysis',
       //   url: './requirementChangeAnalysis.html',
