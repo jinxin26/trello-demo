@@ -55,7 +55,7 @@ const getBoardButton = (t, opts) => {
         fullscreen: true,
         actions:[{
           url: 'https://google.com',
-          position: 'left'
+          position: 'right'
         }]
       })
     }
