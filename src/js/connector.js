@@ -48,11 +48,20 @@ const getBoardButton = (t, opts) => {
     text: 'Requirement Changes',
     condition: 'always',
     callback: function (t, opt) {
-      t.modal({
+      t.navigate({
         title: 'Requirement Change Analysis',
         url: './requirementChangeAnalysis.html',
         fullscreen: true,
-      })
+      }, {
+          title: 'AnotherPage',
+          url: './requirementChangeAnalysis.html',
+          fullscreen: true,
+        })
+      // t.modal({
+      //   title: 'Requirement Change Analysis',
+      //   url: './requirementChangeAnalysis.html',
+      //   fullscreen: true,
+      // })
     }
   }];
 }
