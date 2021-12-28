@@ -210,3 +210,7 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
     })
     return data;
 }
+
+showVersionRecord = () => {
+    console.log('this is showVersionRecord');
+}
