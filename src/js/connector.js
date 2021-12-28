@@ -49,9 +49,7 @@ const getBoardButton = (t, opts) => {
     condition: 'always',
     callback: function (t, opt) {
       t.navigate({
-        title: 'Requirement Change Analysis',
-        url: './requirementChangeAnalysis.html',
-        fullscreen: true,
+        url: './requirementChangeAnalysis.html'
       })
       // t.modal({
       //   title: 'Requirement Change Analysis',
