@@ -212,7 +212,7 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
 }
 
 showVersionRecord = () => {
-    t.render();
+    t.render(function(){});
     // return t.modal({
     //     title: 'Requirement Change Analysis',
     //     url: './requirementChangeAnalysis.html',
