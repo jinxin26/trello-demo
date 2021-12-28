@@ -1,9 +1,9 @@
 const t = window.TrelloPowerUp.iframe();
 
-showStatistics = function() {
+window.showStatistics = function showStatistics() {
   return t.modal({
     title: 'Requirement Change Analysis',
     url: './requirementChangeAnalysis.html',
     fullscreen: true
-  })
-}
+  });
+};
