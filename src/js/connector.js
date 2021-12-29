@@ -63,8 +63,8 @@ const getBoardButton = (t, opts) => {
     callback: function (t, opt) {
       t.modal({
         title: 'Requirement Change Analysis',
-        url: './requirementChangeAnalysis.html',
-        // url: './changeCurrentPage.html',
+        // url: './requirementChangeAnalysis.html',
+        url: './changeCurrentPage.html',
         fullscreen: true
       })
     }

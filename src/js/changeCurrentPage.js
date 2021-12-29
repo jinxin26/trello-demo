@@ -6,3 +6,10 @@ showStatistics = () => {
     url: './requirementChangeAnalysis.html'
   });
 };
+
+showVersionRecord = () => {
+  return t.modal({
+    title: 'Version Record',
+    url: './requirementChangeAnalysis.html'
+  })
+}
