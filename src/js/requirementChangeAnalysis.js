@@ -51,6 +51,9 @@ t.cards('id', 'labels', 'name', 'dateLastActivity')
         console.log('cardsInfo: ', cardsInfo);
     });
 
+
+startAnalysis();
+
 startAnalysis = () => {
     drawPieChart();
     drawHistogram();
@@ -211,11 +214,3 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
     return data;
 }
 
-showVersionRecord = () => {
-    t.render(function(){});
-    // return t.modal({
-    //     title: 'Requirement Change Analysis',
-    //     url: './requirementChangeAnalysis.html',
-    //     fullscreen: true
-    // });
-}
