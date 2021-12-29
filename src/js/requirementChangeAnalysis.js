@@ -203,12 +203,10 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
 
 versionRecord = () => {
     console.log('this is version record button');
-    t.render(function() {
-        return t.modal({
-            title: 'Version Record',
-            url: './changeCurrentPage.html',
-            fullscreen: true
-        })
+    return t.modal({
+        title: 'Version Record',
+        url: './changeCurrentPage.html',
+        fullscreen: true
     })
 }
 
