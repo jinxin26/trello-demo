@@ -22,6 +22,9 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     document.body.appendChild(versionRecord);
     versionRecord.id = "versionRecord";
 
+    console.log('this is list', list.data);
+    list.data.filter(item => item.descriptions !== 'v0.0');
+    console.log('this is list after filter', list.data);
     for (let i = list.data.length - 1 - curPage * 5; i >= list.data.length - curPage * 5 - 5 && i >= 0; i--) {
         if(list.data[i].version !== 'v0.0') {
             const button = document.createElement("button");
