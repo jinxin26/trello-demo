@@ -40,7 +40,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
                 prevPage.disabled = true;
             }
             curPage = curPage - 1;
-            addBtnForVersionRecord(listWithoutV0, versionRecord, curPage);
+            addBtnForVersionRecord(list, versionRecord, curPage);
 
         }
         versionRecord.appendChild(prevPage);
@@ -53,7 +53,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
                 nextPage.disabled = true;
             }
             curPage = curPage + 1;
-            addBtnForVersionRecord(listWithoutV0, versionRecord, curPage);
+            addBtnForVersionRecord(list, versionRecord, curPage);
         }
         versionRecord.appendChild(nextPage);
     }
