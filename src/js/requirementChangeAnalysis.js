@@ -201,7 +201,8 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
     return data;
 }
 
-showVersionRecord = () => {
+versionRecord = () => {
+    console.log('this is version record button');
     t.render(function() {
         t.modal({
             title: 'Version Record',
