@@ -90,7 +90,7 @@ function drawHistogram() {
     myHistogram.setOption(histogramOption);
 }
 
-generateHistogramOption = source => {
+function generateHistogramOption(source) {
     const _ = require('lodash');
     const labels = _.drop(source).map(data => data[0]);
     const histogramOption = {
