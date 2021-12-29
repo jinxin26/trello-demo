@@ -1,10 +1,11 @@
-//import axios from 'axios';
+import axios from 'axios';
 // axios.get("http://localhost:8086/description/202112210003").then(res => console.log(res));
 //
-// let info = {
-//   cardId: '',
-//   descriptions: '',
-// }
+let info = {
+  cardId: '',
+  descriptions: '',
+  version: ''
+}
 console.log('Hello World!');
 
 let demandChangeCount;
@@ -29,6 +30,18 @@ const cardButtons = function(t, opts) {
   //   info.descriptions = res.desc;
   //   axios.post("http://localhost:8086/description", info).then(res => console.log('this is post info', res));
   // })
+  const context = t.getContext();
+  t.get(context.card, 'shared', 'demandChangeCount', 0).then(function (res) {
+    if (res === 0) {
+      t.card('id', 'desc').then(res => {
+        console.log('t.card: ', res);
+        info.cardId = res.id;
+        info.descriptions = res.desc;
+        info.version = `v0.0`;
+        axios.post("http://localhost:8086/description", info).then(() => console.log("已存初始版本0.0"))
+      });
+    }
+  })
 
   return [{
     text: 'Demand Changes',
