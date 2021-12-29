@@ -33,36 +33,29 @@ option = {
 };
 
 
-function startAnalysis() {
-    console.log('this is init');
-    t.board('labels').then(res => {
-        const _ = require('lodash');
-        labelSet = _.filter(res.labels, label => label.name !== '');
-        console.log('labelSet: ', labelSet);
-    });
-    t.cards('id', 'labels', 'name', 'dateLastActivity')
-        .then(cards => {
-            console.log('cards: ', cards);
-            cards.forEach(cardInfo => {
-                t.get(cardInfo.id, 'shared', 'demandChangeCount')
-                    .then(requirementChangeCount => {
-                        console.log('demandChangeCount: ',requirementChangeCount);
-                        cardsInfo = [...cardsInfo, {...cardInfo, requirementChangeCount}];
-                    })
-            });
-            console.log('cardsInfo: ', cardsInfo);
-        });
+t.board('labels').then(res => {
+    const _ = require('lodash');
+    labelSet = _.filter(res.labels, label => label.name !== '');
+});
+t.cards('id', 'labels', 'name', 'dateLastActivity')
+  .then(cards => {
+      cards.forEach(cardInfo => {
+          t.get(cardInfo.id, 'shared', 'requirementChangeCount')
+            .then(requirementChangeCount => {
+                cardsInfo = [...cardsInfo, {...cardInfo, requirementChangeCount}];
+            })
+      });
+  });
+
+startAnalysis = () => {
     drawPieChart();
     drawHistogram();
 }
-startAnalysis();
 
-function drawHistogram() {
-    console.log('this is drawHistogram');
+drawHistogram = () => {
     const _ = require('lodash');
     const moment = require('moment');
     let source = [];
-    console.log('cardsInfo: ', cardsInfo);
     for (let i = 0; i < 6; i++) {
         const twoWeeksStart = moment().local().endOf('week').subtract((i + 1) * 14, 'days');
         const twoWeeksEnd = moment().local().endOf('week').subtract(i * 14, 'days');
@@ -70,16 +63,12 @@ function drawHistogram() {
             const dateLastActivityOfCard = moment(cardInfo.dateLastActivity);
             return twoWeeksEnd.isAfter(dateLastActivityOfCard) && twoWeeksStart.isBefore(dateLastActivityOfCard);
         });
-        console.log('list: ', list);
         const cardCount = list.length;
         let changeCount = 0;
         _.forEach(list, singleCard => {
-            const singleCount = _.get(singleCard, 'demandChangeCount', 0);
+            const singleCount = _.get(singleCard, 'requirementChangeCount', 0);
             changeCount += singleCount;
         });
-        console.log('twoWeeksStart: ', twoWeeksStart);
-        console.log('twoWeeksEnd: ', twoWeeksEnd);
-        console.log('cardCount and changeCount: ', cardCount, changeCount);
         source = [...source, [`${twoWeeksStart.format('MM/DD')} ~ ${twoWeeksEnd.format('MM/DD')}`, cardCount, changeCount]];
     }
     const legend = ['cycle', 'cards count', 'changes count'];
@@ -88,7 +77,7 @@ function drawHistogram() {
     myHistogram.setOption(histogramOption);
 }
 
-function generateHistogramOption(source) {
+generateHistogramOption = source => {
     const _ = require('lodash');
     const labels = _.drop(source).map(data => data[0]);
     const histogramOption = {
@@ -130,12 +119,10 @@ function generateHistogramOption(source) {
         series: [{type: 'bar'}, {type: 'bar'}]
     };
     histogramOption.dataset.source = source;
-    console.log('source: ', source);
     return histogramOption;
 }
 
-function drawPieChart() {
-    console.log('this is drawPieChart');
+drawPieChart = () => {
     const _ = require('lodash');
     _.forEach(labelSet, label => {
         const list = _.filter(cardsInfo, cardInfo => {
@@ -143,14 +130,12 @@ function drawPieChart() {
         });
         dataSet = {...dataSet, [label.name]: list};
     });
-    console.log('dataset', dataSet)
     const data = calculateRequirementChangeCountAndCardCountAsSource(dataSet);
     option = generatePieChartOption(data);
     myChart.setOption(option);
 }
 
-function generatePieChartOption(data) {
-    console.log('this is generatePieChartOption');
+generatePieChartOption = data => {
     const pieChartOption = {
         title: {
             text: 'Total Number of Requirement Changes by Labels',
@@ -202,18 +187,16 @@ function generatePieChartOption(data) {
     return pieChartOption;
 }
 
-function calculateRequirementChangeCountAndCardCountAsSource(dataSet) {
-    console.log('this is calculateRequirementChangeCountAndCardCountAsSource');
+calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
     const _ = require('lodash');
     let data = [];
     _.forEach(dataSet, (value, key) => {
         let changeCount = 0;
         _.forEach(value, singleCard => {
-            const singleCount = _.get(singleCard, 'demandChangeCount', 0);
+            const singleCount = _.get(singleCard, 'requirementChangeCount', 0);
             changeCount += singleCount;
         });
         data = [...data, {name: key, value: changeCount}];
     })
     return data;
 }
-
