@@ -27,7 +27,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
     console.log('this is listWithoutV0 after filter', listWithoutV0);
     for (let i = listWithoutV0.length - 1 - curPage * 5; i >= listWithoutV0.length - curPage * 5 - 5 && i >= 0; i--) {
         const button = document.createElement("button");
-        button.textContent = list.data[i].version;
+        button.textContent = listWithoutV0.data[i].version;
         button.addEventListener('click', function () {onVersionBtnCLick(button.textContent)});
         versionRecord.appendChild(button);
     }
