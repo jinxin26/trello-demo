@@ -202,7 +202,8 @@ generatePieChartOption = data => {
     return pieChartOption;
 }
 
-calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
+function calculateRequirementChangeCountAndCardCountAsSource(dataSet) {
+    console.log('this is calculateRequirementChangeCountAndCardCountAsSource');
     const _ = require('lodash');
     let data = [];
     _.forEach(dataSet, (value, key) => {
