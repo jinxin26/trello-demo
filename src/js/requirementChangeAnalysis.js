@@ -33,27 +33,25 @@ option = {
 };
 
 
-t.board('labels').then(res => {
-    const _ = require('lodash');
-    labelSet = _.filter(res.labels, label => label.name !== '');
-    console.log('labelSet: ', labelSet);
-});
-t.cards('id', 'labels', 'name', 'dateLastActivity')
-    .then(cards => {
-        console.log('cards: ', cards);
-        cards.forEach(cardInfo => {
-            t.get(cardInfo.id, 'shared', 'demandChangeCount')
-                .then(requirementChangeCount => {
-                    console.log('demandChangeCount: ',requirementChangeCount);
-                    cardsInfo = [...cardsInfo, {...cardInfo, requirementChangeCount}];
-                })
-        });
-        console.log('cardsInfo: ', cardsInfo);
-    });
-
-
 const startAnalysis = () => {
     console.log('this is init');
+    t.board('labels').then(res => {
+        const _ = require('lodash');
+        labelSet = _.filter(res.labels, label => label.name !== '');
+        console.log('labelSet: ', labelSet);
+    });
+    t.cards('id', 'labels', 'name', 'dateLastActivity')
+        .then(cards => {
+            console.log('cards: ', cards);
+            cards.forEach(cardInfo => {
+                t.get(cardInfo.id, 'shared', 'demandChangeCount')
+                    .then(requirementChangeCount => {
+                        console.log('demandChangeCount: ',requirementChangeCount);
+                        cardsInfo = [...cardsInfo, {...cardInfo, requirementChangeCount}];
+                    })
+            });
+            console.log('cardsInfo: ', cardsInfo);
+        });
     drawPieChart();
     drawHistogram();
 }
