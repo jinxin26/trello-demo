@@ -60,6 +60,7 @@ const startAnalysis = () => {
 startAnalysis();
 
 const drawHistogram = () => {
+    console.log('this is drawHistogram');
     const _ = require('lodash');
     const moment = require('moment');
     let source = [];
@@ -89,7 +90,7 @@ const drawHistogram = () => {
     myHistogram.setOption(histogramOption);
 }
 
-const generateHistogramOption = source => {
+generateHistogramOption = source => {
     const _ = require('lodash');
     const labels = _.drop(source).map(data => data[0]);
     const histogramOption = {
@@ -136,6 +137,7 @@ const generateHistogramOption = source => {
 }
 
 const drawPieChart = () => {
+    console.log('this is drawPieChart');
     const _ = require('lodash');
     _.forEach(labelSet, label => {
         const list = _.filter(cardsInfo, cardInfo => {
