@@ -52,12 +52,11 @@ t.cards('id', 'labels', 'name', 'dateLastActivity')
     });
 
 
-startAnalysis();
-
-startAnalysis = () => {
+const startAnalysis = () => {
     drawPieChart();
     drawHistogram();
 }
+startAnalysis();
 
 drawHistogram = () => {
     const _ = require('lodash');
