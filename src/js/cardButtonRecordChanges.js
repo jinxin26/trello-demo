@@ -53,7 +53,9 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
                 console.log('this is listWithoutV0.length / 5', listWithoutV0.length / 5);
                 nextPage.disabled = true;
             }
-            curPage = curPage + 1;
+            else {
+                curPage = curPage + 1;
+            }
             addBtnForVersionRecord(list, versionRecord, curPage);
         }
         versionRecord.appendChild(nextPage);
