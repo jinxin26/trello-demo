@@ -150,7 +150,8 @@ function drawPieChart() {
     myChart.setOption(option);
 }
 
-generatePieChartOption = data => {
+function generatePieChartOption(data) {
+    console.log('this is generatePieChartOption');
     const pieChartOption = {
         title: {
             text: 'Total Number of Requirement Changes by Labels',
