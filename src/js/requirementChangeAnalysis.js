@@ -145,6 +145,7 @@ function drawPieChart() {
         });
         dataSet = {...dataSet, [label.name]: list};
     });
+    console.log('dataset', dataSet)
     const data = calculateRequirementChangeCountAndCardCountAsSource(dataSet);
     option = generatePieChartOption(data);
     myChart.setOption(option);
