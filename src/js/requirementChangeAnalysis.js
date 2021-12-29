@@ -59,7 +59,7 @@ const startAnalysis = () => {
 }
 startAnalysis();
 
-const drawHistogram = () => {
+function drawHistogram() {
     console.log('this is drawHistogram');
     const _ = require('lodash');
     const moment = require('moment');
@@ -136,7 +136,7 @@ generateHistogramOption = source => {
     return histogramOption;
 }
 
-const drawPieChart = () => {
+function drawPieChart() {
     console.log('this is drawPieChart');
     const _ = require('lodash');
     _.forEach(labelSet, label => {
