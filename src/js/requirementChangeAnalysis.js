@@ -33,7 +33,7 @@ option = {
 };
 
 
-const startAnalysis = () => {
+function startAnalysis() {
     console.log('this is init');
     t.board('labels').then(res => {
         const _ = require('lodash');
