@@ -47,7 +47,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
         nextPage.onclick = function() {
-            if(curPage >= listWithoutV0.length / 5)
+            if(curPage >= listWithoutV0.length / 5 - 1)
             {
                 console.log('this is curPage', curPage);
                 console.log('this is listWithoutV0.length / 5', listWithoutV0.length / 5);
