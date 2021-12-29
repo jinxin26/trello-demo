@@ -53,12 +53,13 @@ t.cards('id', 'labels', 'name', 'dateLastActivity')
 
 
 const startAnalysis = () => {
+    console.log('this is init');
     drawPieChart();
     drawHistogram();
 }
 startAnalysis();
 
-drawHistogram = () => {
+const drawHistogram = () => {
     const _ = require('lodash');
     const moment = require('moment');
     let source = [];
@@ -88,7 +89,7 @@ drawHistogram = () => {
     myHistogram.setOption(histogramOption);
 }
 
-generateHistogramOption = source => {
+const generateHistogramOption = source => {
     const _ = require('lodash');
     const labels = _.drop(source).map(data => data[0]);
     const histogramOption = {
@@ -134,7 +135,7 @@ generateHistogramOption = source => {
     return histogramOption;
 }
 
-drawPieChart = () => {
+const drawPieChart = () => {
     const _ = require('lodash');
     _.forEach(labelSet, label => {
         const list = _.filter(cardsInfo, cardInfo => {
