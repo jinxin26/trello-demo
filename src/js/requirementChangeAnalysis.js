@@ -206,7 +206,7 @@ versionRecord = () => {
     t.render(function() {
         t.modal({
             title: 'Version Record',
-            url: './requirementChangeAnalysis.html',
+            url: './changeCurrentPage.html',
             fullscreen: true
         })
     })
