@@ -5,9 +5,18 @@
   <title>CurrentPage</title>
 </head>
 <body>
-  <div id='changePage'>
-    <button id='statistics' onclick="showStatistics()">Statistics</button>
-    <button id='versionRecord' onclick="showVersionRecord()">Version Record</button>
+<!--  <div id='changePage'>-->
+<!--    <button id='statistics' onclick="showStatistics()">Statistics</button>-->
+<!--    <button id='versionRecord' onclick="showVersionRecord()">Version Record</button>-->
+<!--  </div>-->
+  <div style="display:flex;flex-direction: column; align-items:center;">
+    <h1 style="text-align: center">Requirement Change Analysis</h1>
+    <div style="display:flex; justify-content:center;">
+      <button id='statistics' onclick="showStatistics()">Statistics</button>
+      <button id='versionRecord' onclick="showVersionRecord()">Version Record</button>
+    </div>
+    <div id="charts" style="width:900px; height: 600px; margin: 40px 0 0 0;">it is for echarts</div>
+    <div id="histogram" style="width:900px; height: 600px; margin: 20px 0 0 0;">it is for echarts</div>
   </div>
 
   <script src="https://p.trellocdn.com/power-up.min.js" crossorigin="anonymous"></script>
