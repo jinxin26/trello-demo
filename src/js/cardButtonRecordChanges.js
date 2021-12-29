@@ -41,17 +41,16 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
             }
             curPage = curPage - 1;
             addBtnForVersionRecord(list, versionRecord, curPage);
-
         }
         versionRecord.appendChild(prevPage);
 
         const nextPage = document.createElement("button");
         nextPage.textContent = ">";
         nextPage.onclick = function() {
-            if(curPage === listWithoutV0.length / 5 - 1)
+            if(curPage >= listWithoutV0.length / 5)
             {
                 console.log('this is curPage', curPage);
-                console.log('this is listWithoutV0.length / 5 - 1', listWithoutV0.length / 5 - 1);
+                console.log('this is listWithoutV0.length / 5', listWithoutV0.length / 5);
                 nextPage.disabled = true;
             }
             curPage = curPage + 1;
