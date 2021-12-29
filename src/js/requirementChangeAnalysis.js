@@ -47,7 +47,7 @@ t.cards('id', 'labels', 'name', 'dateLastActivity')
       });
   });
 
-startAnalysis = () => {
+showStatistics = () => {
     drawPieChart();
     drawHistogram();
 }
@@ -201,7 +201,7 @@ calculateRequirementChangeCountAndCardCountAsSource = dataSet => {
     return data;
 }
 
-versionRecord = () => {
+showVersionRecord = () => {
     console.log('this is version record button');
     return t.modal({
         title: 'Version Record',
