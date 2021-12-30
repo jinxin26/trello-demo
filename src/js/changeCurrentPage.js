@@ -1,3 +1,3 @@
 showLists = () => {
-  console.log('this is a lists');
+  console.log('this is a list');
 }
