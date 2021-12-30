@@ -38,7 +38,7 @@ const cardButtons = function(t, opts) {
         info.cardId = res.id;
         info.descriptions = res.desc;
         info.version = `v0.0`;
-        axios.post("http://122.51.213.254:8086/description", info).then(() => console.log("已存初始版本0.0"))
+        axios.post("https://122.51.213.254:8086/description", info).then(() => console.log("已存初始版本0.0"))
       });
     }
   })
