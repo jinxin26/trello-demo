@@ -38,7 +38,7 @@ const cardButtons = function(t, opts) {
         info.cardId = res.id;
         info.descriptions = res.desc;
         info.version = `v0.0`;
-        axios.post("/description", info).then(() => console.log("已存初始版本0.0"))
+        axios.post("https://friendly-sinoussi-3fd1f5.netlify.app/description", info).then(() => console.log("已存初始版本0.0"))
       });
     }
   })

@@ -64,7 +64,7 @@ const addBtnForVersionRecord = (list, versionRecord, curPage) => {
 
 function onVersionBtnCLick(text) {
     console.log('text', text);
-    axios.get(`/description/${context.card}`).then(list => {
+    axios.get(`https://friendly-sinoussi-3fd1f5.netlify.app/description/${context.card}`).then(list => {
         console.log('length of list', list.data.length);
 
         const versionNum = parseInt(text.substring(1));
@@ -102,7 +102,7 @@ function onVersionBtnCLick(text) {
 }
 
 const getVersionRecord = () => {
-    axios.get(`/description/${context.card}`).then(list => {
+    axios.get(`https://friendly-sinoussi-3fd1f5.netlify.app/description/${context.card}`).then(list => {
         const versionRecord = document.getElementById("versionRecord");
         let curPage = 0;
         addBtnForVersionRecord(list, versionRecord, curPage);
@@ -144,7 +144,7 @@ window.onSaveBtnClick = function onSaveBtnClick () {
         info.cardId = res.id;
         info.descriptions = res.desc;
         info.version = `v${demandChangeCount}.0`;
-        axios.post("/description", info).then(res => {
+        axios.post("https://friendly-sinoussi-3fd1f5.netlify.app/description", info).then(res => {
             console.log('this is post info', res);
 
             axios.get(`/description/${context.card}`).then(list => {
