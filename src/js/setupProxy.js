@@ -2,10 +2,10 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
     app.use(
-        'http://localhost:8086/',
+        'http://trello.vaiwan.com/',
         createProxyMiddleware(
             {
-                        target: 'http://122.51.213.254:8086/',
+                        target: 'http://trello.vaiwan.com/',
                         changeOrigin: true
                     }
         )
